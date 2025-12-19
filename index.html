@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СФЕРА - Презентация голосового помощника</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1f36;
+            --secondary: #4a6cf7;
+            --accent: #6c5ce7;
+            --light: #ffffff;
+            --dark: #0f1424;
+            --gradient: linear-gradient(135deg, #4a6cf7, #6c5ce7);
+            --gradient-light: linear-gradient(135deg, #4a6cf7, #00cec9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Контейнер презентации */
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slides-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100vw;
+            height: 100vh;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Стили для слайдов */
+        .slide-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .slide-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        /* Навигация */
+        .presentation-nav {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+            .nav-btn:hover {
+                background: var(--gradient);
+                transform: scale(1.1);
+            }
+
+        .slide-indicators {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .slide-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .slide-indicator.active {
+                background: var(--secondary);
+                transform: scale(1.2);
+            }
+
+        /* Компоненты слайдов */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+            .feature-card:hover {
+                transform: translateY(-5px);
+                border-color: var(--secondary);
+            }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .command-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .command-item {
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary);
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+            .command-item:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+        .demo-circle {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .demo-circle i {
+                font-size: 4rem;
+                color: white;
+                z-index: 2;
+            }
+
+        /* Заставка */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+        }
+
+        .splash-logo {
+            font-size: 4rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .splash-text {
+            font-size: 1.5rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Стили для специфических слайдов */
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 600px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(74, 108, 247, 0.3);
+            }
+
+        /* Адаптивность */
+        @media (max-width: 1024px) {
+            .slide-title {
+                font-size: 3rem;
+            }
+
+            .slide-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 2rem 1rem;
+            }
+
+            .slide-title {
+                font-size: 2.5rem;
+            }
+
+            .slide-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .demo-circle {
+                width: 200px;
+                height: 200px;
+            }
+
+                .demo-circle i {
+                    font-size: 3rem;
+                }
+
+            .presentation-nav {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .nav-btn {
+                width: 50px;
+                height: 50px;
+            }
+
+            .slide-indicators {
+                bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide-title {
+                font-size: 2rem;
+            }
+
+            .slide-subtitle {
+                font-size: 1rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .command-item {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .nav-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Заставка -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-logo">СФЕРА</div>
+        <div class="splash-text">Голосовой помощник нового поколения</div>
+        <div style="margin-top: 2rem; opacity: 0.6;">
+            <i class="fas fa-microphone" style="font-size: 2rem;"></i>
+        </div>
+    </div>
+
+    <!-- Контейнер презентации -->
+    <div class="presentation-container">
+        <div class="slides-container" id="slidesContainer">
+
+            <!-- Слайд 1: Приветствие -->
+            <section class="slide active">
+                <div class="slide-number">01</div>
+                <div class="slide-content center-content">
+                    <h1 class="slide-title">СФЕРА</h1>
+                    <p class="slide-subtitle">Голосовой помощник нового поколения</p>
+
+                    <div class="demo-circle" style="animation: pulse 3s infinite;">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+
+                    <p style="max-width: 800px; margin-top: 2rem; font-size: 1.2rem; opacity: 0.9;">
+                        Приветствую тебя, дорогой пользователь!<br>
+                        Спасибо, что выбрал СФЕРУ — твоего нового голосового союзника в мире технологий.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Слайд 2: Философия -->
+            <section class="slide">
+                <div class="slide-number">02</div>
+                <div class="slide-content">
+                    <h2 class="slide-title">Философия СФЕРЫ</h2>
+                    <p class="slide-subtitle">Переосмысление взаимодействия человека и компьютера</p>
+
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-voice"></i>
+                            </div>
+                            <h3>Голосовой интерфейс</h3>
+                            <p>Твой личный голосовой интерфейс к компьютеру</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-magic"></i>
+                            </div>
+                            <h3>Одно слово — действие</h3>
+                            <p>Не нужно искать иконки или запоминать горячие клавиши</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h3>Гибкая настройка</h3>
+                            <p>Настрой под свой ритм жизни с помощью команд и сценариев</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Слайд 3: Типы команд -->
+            <section class="slide">
+                <div class="slide-number">03</div>
+                <div class="slide-content">
+                    <h2 class="slide-title">Типы команд</h2>
+                    <p class="slide-subtitle">Действия, которые СФЕРА выполняет по твоей голосовой фразе</p>
+
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h3>Приложения</h3>
+                            <p>Запуск любой программы голосом</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3>Веб-сайты</h3>
+                            <p>Открытие сайтов одной фразой</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-keyboard"></i>
+                            </div>
+                            <h3>Горячие клавиши</h3>
+                            <p>Одно слово заменяет комбинации клавиш</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-mouse-pointer"></i>
+                            </div>
+                            <h3>Управление мышью</h3>
+                            <p>Курсор сам прыгает в нужное место</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Слайд 4: Сценарии -->
+            <section class="slide">
+                <div class="slide-number">04</div>
+                <div class="slide-content">
+                    <h2 class="slide-title">Сценарии</h2>
+                    <p class="slide-subtitle">Цепочка команд, запускаемая одной фразой</p>
+
+                    <div class="demo-circle" style="background: var(--gradient-light); margin-bottom: 2rem;">
+                        <i class="fas fa-film"></i>
+                    </div>
+
+                    <div class="command-list">
+                        <div class="command-item">
+                            <strong>"СФЕРА, доброе утро"</strong>
+                            <p style="margin-top: 0.5rem; opacity: 0.8;">
+                                → Включает новости<br>
+                                → Запускает утренний плейлист<br>
+                                → Показывает погоду<br>
+                                → Включает свет (если подключен умный дом)
+                            </p>
+                        </div>
+
+                        <div class="command-item">
+                            <strong>"СФЕРА, за работу"</strong>
+                            <p style="margin-top: 0.5rem; opacity: 0.8;">
+                                → Открывает браузер<br>
+                                → Запускает музыку<br>
+                                → Сворачивает все окна<br>
+                                → Перемещает курсор в поисковую строку
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Слайд 5: Готовые команды -->
+            <section class="slide">
+                <div class="slide-number">05</div>
+                <div class="slide-content">
+                    <h2 class="slide-title">Готовые команды</h2>
+                    <p class="slide-subtitle">Начни использовать уже сегодня — без настройки</p>
+
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">"СФЕРА, время"</div>
+                            <p>Называет текущее время</p>
+                        </div>
+
+                        <div class="stat-item">
+                            <div class="stat-number">"СФЕРА, набери"</div>
+                            <p>Диктовка текста</p>
+                        </div>
+
+                        <div class="stat-item">
+                            <div class="stat-number">"СФЕРА, проводник"</div>
+                            <p>Открывает Проводник</p>
+                        </div>
+
+                        <div class="stat-item">
+                            <div class="stat-number">"СФЕРА, будильник"</div>
+                            <p>Устанавливает пробуждение</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Слайд 6: Для кого -->
+            <section class="slide">
+                <div class="slide-number">06</div>
+                <div class="slide-content">
+                    <h2 class="slide-title">Для кого создана СФЕРА?</h2>
+                    <p class="slide-subtitle">Каждый найдет свой способ использования</p>
+
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <h3>Работающим</h3>
+                            <p>Автоматизация рутины, фокус на главном</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3>Студентам</h3>
+                            <p>Диктовка конспектов, быстрый доступ к учебным сайтам</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h3>Творческим людям</h3>
+                            <p>Мгновенный запуск редакторов, плейлистов, инструментов</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Всем</h3>
+                            <p>Кто ценит своё время и хочет работать с комфортом</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Слайд 7: Слоган -->
+            <section class="slide">
+                <div class="slide-number">07</div>
+                <div class="slide-content center-content">
+                    <h2 class="slide-title">СФЕРА слышит.<br>СФЕРА понимает.<br>СФЕРА делает.</h2>
+
+                    <div class="demo-circle" style="margin: 3rem auto; animation: pulse 2s infinite;">
+                        <i class="fas fa-robot"></i>
+                    </div>
+
+                    <p style="max-width: 800px; margin-top: 1rem; font-size: 1.3rem; opacity: 0.9;">
+                        Ты создаёшь свой уникальный цифровой опыт:<br>
+                        от простых фраз до сложных автоматизаций.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Слайд 8: Завершение -->
+            <section class="slide">
+                <div class="slide-number">08</div>
+                <div class="slide-content center-content">
+                    <h2 class="slide-title">Начни прямо сейчас</h2>
+                    <p class="slide-subtitle">Почувствуй, как технологии служат тебе по-настоящему</p>
+
+                    <div style="margin: 3rem 0;">
+                        <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem;">
+                            <div style="text-align: center;">
+                                <i class="fas fa-desktop" style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 0.5rem;"></i>
+                                <p>Windows 10/11</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <i class="fas fa-microphone" style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 0.5rem;"></i>
+                                <p>Микрофон</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <i class="fas fa-wifi" style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 0.5rem;"></i>
+                                <p>Интернет</p>
+                            </div>
+                        </div>
+
+                        <button id="downloadBtn" class="cta-button">
+                            <i class="fas fa-download" style="margin-right: 10px;"></i>
+                            Скачать СФЕРУ
+                        </button>
+
+                        <p style="margin-top: 3rem; opacity: 0.7; font-size: 1.1rem;">
+                            Установите за 2 минуты<br>
+                            Начните использовать сразу
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Навигация -->
+        <div class="presentation-nav">
+            <button class="nav-btn prev-btn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="nav-btn next-btn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Индикаторы -->
+        <div class="slide-indicators" id="slideIndicators">
+            <!-- Индикаторы будут созданы через JS -->
+        </div>
+    </div>
+
+    <script>
+        // Управление презентацией
+        document.addEventListener('DOMContentLoaded', function() {
+        // Элементы DOM
+        const splashScreen = document.getElementById('splashScreen');
+        const slidesContainer = document.getElementById('slidesContainer');
+        const slides = document.querySelectorAll('.slide');
+        const slideIndicators = document.getElementById('slideIndicators');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        // Показываем заставку на 3 секунды
+        setTimeout(() => {
+        splashScreen.style.opacity = '0';
+        splashScreen.style.transition = 'opacity 0.5s ease';
+        setTimeout(() => {
+        splashScreen.style.display = 'none';
+        }, 500);
+        }, 3000);
+
+        // Создаем индикаторы
+        for (let i = 0; i < totalSlides; i++) {
+        const indicator = document.createElement('div');
+        indicator.className = 'slide-indicator';
+        if (i === 0) indicator.classList.add('active');
+        indicator.addEventListener('click', () => {
+        goToSlide(i);
+        });
+        slideIndicators.appendChild(indicator);
+        }
+
+        // Функция перехода к слайду
+        function goToSlide(index) {
+        if (index < 0 || index >= totalSlides) return;
+
+        // Обновляем текущий слайд
+        currentSlide = index;
+
+        // Перемещаем контейнер
+        slidesContainer.style.transform = `translateX(-${currentSlide * 100}vw)`;
+
+        // Обновляем индикаторы
+        document.querySelectorAll('.slide-indicator').forEach((indicator, i) => {
+        if (i === currentSlide) {
+        indicator.classList.add('active');
+        } else {
+        indicator.classList.remove('active');
+        }
+        });
+        }
+
+        // Кнопки навигации
+        prevBtn.addEventListener('click', () => {
+        if (currentSlide > 0) {
+        goToSlide(currentSlide - 1);
+        }
+        });
+
+        nextBtn.addEventListener('click', () => {
+        if (currentSlide < totalSlides - 1) {
+        goToSlide(currentSlide + 1);
+        }
+        });
+
+        // Навигация клавиатурой
+        document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+        e.preventDefault();
+        if (currentSlide > 0) goToSlide(currentSlide - 1);
+        } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+        e.preventDefault();
+        if (currentSlide < totalSlides - 1) goToSlide(currentSlide + 1);
+        } else if (e.key === 'Home') {
+        e.preventDefault();
+        goToSlide(0);
+        } else if (e.key === 'End') {
+        e.preventDefault();
+        goToSlide(totalSlides - 1);
+        }
+        });
+
+        // Свайп для мобильных устройств
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        slidesContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        });
+
+        slidesContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        });
+
+        function handleSwipe() {
+        const swipeThreshold = 50;
+
+        if (touchEndX < touchStartX - swipeThreshold) {
+        // Свайп влево
+        if (currentSlide < totalSlides - 1) {
+        goToSlide(currentSlide + 1);
+        }
+        }
+
+        if (touchEndX > touchStartX + swipeThreshold) {
+        // Свайп вправо
+        if (currentSlide > 0) {
+        goToSlide(currentSlide - 1);
+        }
+        }
+        }
+
+        // Кнопка скачивания
+        downloadBtn.addEventListener('click', () => {
+        alert('Спасибо за интерес к СФЕРЕ!\n\nСсылка на скачивание будет здесь в рабочей версии.\n\nВременно: https://пример-ссылки-на-скачивание.ru');
+        });
+
+        // Инициализация
+        goToSlide(0);
+        });
+    </script>
+</body>
+</html>
