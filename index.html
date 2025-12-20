@@ -51,76 +51,23 @@
             letter-spacing: -0.5px;
         }
 
-        /* Новые анимации */
+        /* Анимации */
         @keyframes float3d {
-            0%, 100% {
-                transform: translateY(0) translateX(0) rotate(0deg);
-            }
-            25% {
-                transform: translateY(-20px) translateX(10px) rotate(5deg);
-            }
-            50% {
-                transform: translateY(-10px) translateX(-10px) rotate(-5deg);
-            }
-            75% {
-                transform: translateY(-15px) translateX(5px) rotate(3deg);
-            }
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+            25% { transform: translateY(-20px) translateX(10px) rotate(5deg); }
+            50% { transform: translateY(-10px) translateX(-10px) rotate(-5deg); }
+            75% { transform: translateY(-15px) translateX(5px) rotate(3deg); }
         }
 
         @keyframes shimmer {
-            0% {
-                background-position: -1000px 0;
-            }
-            100% {
-                background-position: 1000px 0;
-            }
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
         }
 
         @keyframes gradientShift {
-            0% {
-                background-position: 0% 0%;
-            }
-            50% {
-                background-position: 100% 100%;
-            }
-            100% {
-                background-position: 0% 0%;
-            }
-        }
-
-        @keyframes neonPulse {
-            0%, 100% {
-                box-shadow: 0 0 5px var(--secondary),
-                           0 0 10px var(--secondary),
-                           0 0 20px var(--secondary);
-            }
-            50% {
-                box-shadow: 0 0 10px var(--secondary),
-                           0 0 20px var(--secondary),
-                           0 0 40px var(--secondary);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px) rotateY(-20deg);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0) rotateY(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px) rotateY(20deg);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0) rotateY(0);
-            }
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
         }
 
         @keyframes fadeInUp {
@@ -135,14 +82,8 @@
         }
 
         @keyframes glowOrb {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 0.8;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 1;
-            }
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
         }
 
         @keyframes particleFloat {
@@ -150,16 +91,17 @@
                 transform: translateY(0) translateX(0) rotate(0deg);
                 opacity: 0;
             }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
             100% {
                 transform: translateY(-100vh) translateX(100px) rotate(360deg);
                 opacity: 0;
             }
+        }
+
+        @keyframes voiceWave {
+            0%, 100% { height: 15px; }
+            50% { height: 40px; }
         }
 
         /* Новые классы для улучшений */
@@ -205,7 +147,7 @@
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
         }
 
-        /* Заставка - полностью переработанная */
+        /* Заставка */
         .splash-screen {
             position: fixed;
             top: 0;
@@ -300,7 +242,7 @@
             animation: shimmer 2s ease-in-out infinite;
         }
 
-        /* Навигация - улучшенная */
+        /* Навигация */
         nav {
             position: fixed;
             top: 0;
@@ -395,7 +337,7 @@
             width: 100%;
         }
 
-        /* Герой секция - полный редизайн */
+        /* Герой секция */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -425,14 +367,13 @@
             margin: 0 auto;
             position: relative;
             z-index: 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
         }
 
         .hero-content {
-            animation: slideInLeft 1s ease-out;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
         }
 
         .hero-subtitle {
@@ -441,13 +382,14 @@
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
         }
 
         .hero-title {
             font-size: 4.5rem;
             line-height: 1.1;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             background: linear-gradient(45deg, #fff, var(--secondary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -456,45 +398,14 @@
 
         .hero-description {
             font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
             line-height: 1.8;
-        }
-
-        .hero-visual {
-            animation: slideInRight 1s ease-out 0.3s both;
-            position: relative;
-        }
-
-        .hero-sphere {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle at 30% 30%, 
-                rgba(109, 40, 217, 0.3) 0%,
-                rgba(109, 40, 217, 0.2) 30%,
-                rgba(109, 40, 217, 0.1) 70%,
-                transparent 100%);
-            border-radius: 50%;
-            position: relative;
-            animation: float3d 8s ease-in-out infinite;
-            filter: blur(60px);
-        }
-
-        .hero-interface {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px;
-            height: 400px;
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+            border-radius: 20px;
+            border-left: 4px solid var(--accent);
+            text-align: left;
         }
 
         .voice-wave {
@@ -502,12 +413,14 @@
             gap: 6px;
             align-items: flex-end;
             height: 60px;
-            margin-top: 1rem;
+            margin: 2rem auto;
+            justify-content: center;
+            width: 200px;
         }
 
         .voice-bar {
             width: 8px;
-            height: 20px;
+            height: 25px;
             background: var(--gradient);
             border-radius: 4px;
             animation: voiceWave 1.5s ease-in-out infinite;
@@ -522,6 +435,8 @@
             display: flex;
             gap: 1.5rem;
             margin-top: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -563,7 +478,7 @@
             transform: translateY(-5px);
         }
 
-        /* Секции - улучшенные */
+        /* Секции */
         section {
             padding: 8rem 5%;
             position: relative;
@@ -588,7 +503,7 @@
             line-height: 1.6;
         }
 
-        /* Карточки функций - 3D эффект */
+        /* Карточки функций */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -637,7 +552,94 @@
             font-size: 1.1rem;
         }
 
-        /* Демо секция - интерактивная */
+        /* Секция руководства */
+        .guide-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .guide-section {
+            margin-bottom: 4rem;
+            padding: 3rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .guide-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .guide-section p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.2rem;
+        }
+
+        .guide-section ul, .guide-section ol {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .guide-section li {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .guide-section strong {
+            color: white;
+            font-weight: 700;
+        }
+
+        .guide-section code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: var(--accent);
+        }
+
+        .note-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .note-box strong {
+            color: var(--accent);
+        }
+
+        .commands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .command-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .command-item strong {
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Демо секция */
         .demo-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -684,9 +686,10 @@
 
         .terminal-prompt {
             color: var(--accent);
+            font-weight: bold;
         }
 
-        /* FAQ - улучшенный аккордеон */
+        /* FAQ */
         .faq-container {
             max-width: 1000px;
             margin: 0 auto;
@@ -740,7 +743,7 @@
             line-height: 1.7;
         }
 
-        /* Футер - улучшенный */
+        /* Футер */
         footer {
             background: rgba(10, 15, 31, 0.9);
             padding: 5rem 5% 2rem;
@@ -801,7 +804,7 @@
             color: rgba(255, 255, 255, 0.5);
         }
 
-        /* Партиклы и эффекты */
+        /* Партиклы */
         .particles {
             position: fixed;
             top: 0;
@@ -822,26 +825,15 @@
 
         /* Адаптивность */
         @media (max-width: 1200px) {
-            .hero-container {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .demo-container {
                 grid-template-columns: 1fr;
-                text-align: center;
+                gap: 3rem;
             }
-
-            .hero-visual {
-                order: -1;
-            }
-
-            .hero-sphere {
-                width: 400px;
-                height: 400px;
-                margin: 0 auto;
-            }
-
-            .hero-interface {
-                width: 350px;
-                height: 350px;
-            }
-
+            
             .section-title {
                 font-size: 3rem;
             }
@@ -851,28 +843,36 @@
             .nav-links {
                 display: none;
             }
-
+            
             .hero-title {
-                font-size: 3.5rem;
+                font-size: 2.8rem;
             }
-
+            
+            .hero-description {
+                font-size: 1.1rem;
+                padding: 1.5rem;
+            }
+            
             .features-grid {
                 grid-template-columns: 1fr;
             }
-
-            .demo-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
+            
+            .guide-section {
+                padding: 2rem;
             }
-
+            
+            .guide-section h3 {
+                font-size: 1.7rem;
+            }
+            
             .section-title {
                 font-size: 2.5rem;
             }
-
+            
             .splash-logo {
                 font-size: 5rem;
             }
-
+            
             .splash-subtitle {
                 font-size: 1.8rem;
             }
@@ -880,83 +880,52 @@
 
         @media (max-width: 480px) {
             .hero-title {
-                font-size: 2.8rem;
+                font-size: 2.3rem;
             }
-
-            .hero-sphere {
-                width: 300px;
-                height: 300px;
-            }
-
-            .hero-interface {
-                width: 280px;
-                height: 280px;
-                padding: 1.5rem;
-            }
-
+            
             .cta-buttons {
                 flex-direction: column;
             }
-
+            
             .btn {
                 width: 100%;
                 justify-content: center;
             }
-
-            .feature-card {
-                padding: 2rem;
+            
+            .guide-section {
+                padding: 1.5rem;
             }
-
+            
             .section-title {
                 font-size: 2rem;
             }
+            
+            .commands-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        /* Новые элементы UI */
-        .badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: var(--gradient);
-            color: white;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 4rem auto;
-            max-width: 1200px;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem;
-            border-radius: 20px;
+        /* Стили для типографики в руководстве */
+        blockquote {
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
             background: rgba(255, 255, 255, 0.03);
-            transition: all 0.3s ease;
+            font-style: italic;
+            border-radius: 0 8px 8px 0;
         }
 
-        .stat-item:hover {
-            background: rgba(255, 255, 255, 0.06);
-            transform: translateY(-5px);
+        blockquote strong {
+            color: var(--accent);
+            font-style: normal;
         }
 
-        .stat-number {
-            font-size: 3.5rem;
-            font-weight: 900;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.1rem;
+        .highlight {
+            background: linear-gradient(120deg, rgba(109, 40, 217, 0.2) 0%, transparent 100%);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 0.5rem 0;
         }
     </style>
 </head>
@@ -985,10 +954,9 @@
             </div>
             <div class="nav-links">
                 <a href="#home" class="active">Главная</a>
+                <a href="#guide">Руководство</a>
                 <a href="#features">Возможности</a>
                 <a href="#demo">Демо</a>
-                <a href="#tech">Технологии</a>
-                <a href="#testimonials">Отзывы</a>
                 <a href="#download" class="btn btn-primary">Скачать</a>
             </div>
         </div>
@@ -999,124 +967,231 @@
         <div class="hero-bg"></div>
         <div class="hero-container">
             <div class="hero-content">
-                <div class="badge">НОВОЕ ПОКОЛЕНИЕ</div>
                 <h1 class="hero-title">Голосовой помощник <span class="shimmer-text">СФЕРА</span></h1>
-                <p class="hero-description">
-                    Интеллектуальный ассистент, который понимает ваши команды и выполняет задачи мгновенно.
-                    Управляйте компьютером, приложениями и умным домом одним голосом.
-                </p>
+                <div class="voice-wave">
+                    <div class="voice-bar"></div>
+                    <div class="voice-bar"></div>
+                    <div class="voice-bar"></div>
+                    <div class="voice-bar"></div>
+                    <div class="voice-bar"></div>
+                </div>
+                <div class="hero-description">
+                    <p>Приветствую тебя, дорогой пользователь! Спасибо, что выбрал СФЕРУ — твоего нового голосового союзника в мире технологий.</p>
+                    <p>В этом руководстве ты узнаешь, как она работает, зачем нужна и как с её помощью сделать каждый день проще и удобнее. Начнём, пожалуй!</p>
+                </div>
                 <div class="cta-buttons">
                     <a href="#download" class="btn btn-primary">
                         <i class="fas fa-download"></i>
                         Скачать бесплатно
                     </a>
-                    <a href="#demo" class="btn btn-secondary">
-                        <i class="fas fa-play-circle"></i>
-                        Смотреть демо
+                    <a href="#guide" class="btn btn-secondary">
+                        <i class="fas fa-book"></i>
+                        Читать руководство
                     </a>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="hero-sphere"></div>
-                <div class="hero-interface glass-morphism">
-                    <h3 style="color: white; margin-bottom: 1rem;">Голосовой интерфейс</h3>
-                    <div class="voice-wave">
-                        <div class="voice-bar"></div>
-                        <div class="voice-bar"></div>
-                        <div class="voice-bar"></div>
-                        <div class="voice-bar"></div>
-                        <div class="voice-bar"></div>
-                    </div>
-                    <p style="color: rgba(255, 255, 255, 0.7); margin-top: 1rem; font-size: 0.9rem;">
-                        Скажите: "Привет, СФЕРА" для активации
-                    </p>
+        </div>
+    </section>
+
+    <!-- Руководство пользователя -->
+    <section id="guide">
+        <div class="section-header">
+            <h2 class="section-title gradient-text">Руководство пользователя</h2>
+            <p class="section-subtitle">Всё, что нужно знать о работе с СФЕРОЙ</p>
+        </div>
+
+        <div class="guide-container">
+            <!-- Зачем нужна СФЕРА -->
+            <div class="guide-section glass-morphism">
+                <h3><i class="fas fa-lightbulb"></i> Зачем нужна СФЕРА? В чём её смысл?</h3>
+                <p><strong>СФЕРА</strong> — это не просто помощник, который отвечает на вопросы. Это <strong>твой личный голосовой интерфейс к компьютеру</strong>, с помощью которого ты управляешь всем — одним словом.</p>
+                <p>Представь: не нужно искать иконки, кликать мышкой или запоминать горячие клавиши. Просто скажи — и всё произойдёт. Благодаря гибкой системе <strong>команд</strong> и <strong>сценариев</strong>, ты можешь настроить СФЕРУ под свой ритм жизни и превратить рутину в магию одного голосового запроса.</p>
+            </div>
+
+            <!-- Что такое команды -->
+            <div class="guide-section glass-morphism">
+                <h3><i class="fas fa-bullseye"></i> Что такое команды?</h3>
+                <p><strong>Команда</strong> — это действие, которое СФЕРА выполняет по твоей голосовой фразе. Ты сам решаешь, что она будет делать, выбрав один из четырёх типов:</p>
+                
+                <h4 style="margin-top: 2rem;">1. <strong>Приложения</strong></h4>
+                <p>Выбираешь тип <em>Приложения</em> → нажимаешь <strong>«Выбрать»</strong> → появляется список всех программ на твоём компьютере. Кликаешь, например, <em>Telegram</em>, и задаёшь голосовую команду: <strong>«Открой чаты»</strong>. Теперь говоришь: <em>«СФЕРА, открой чаты»</em> — и мессенджер запускается мгновенно. Так можно настроить любое приложение: от <em>Блокнота</em> до <em>Photoshop</em>.</p>
+
+                <h4 style="margin-top: 1.5rem;">2. <strong>Веб-сайты</strong></h4>
+                <p>Нужно на YouTube, в почту или «Яндекс.Новости»? Выбираешь <em>Веб-сайт</em>, вставляешь ссылку (например, <code>https://music.yandex.ru</code>) и назначаешь команду: <strong>«Музыка»</strong>. Сказал — и браузер уже открывает нужную страницу.</p>
+
+                <h4 style="margin-top: 1.5rem;">3. <strong>Горячие клавиши</strong></h4>
+                <p>Любишь <code>Ctrl+C</code>, <code>Alt+Tab</code> или <code>Win+L</code>? Выбираешь <em>Горячие клавиши</em> → нажимаешь <strong>«Запись»</strong> → зажимаешь нужные клавиши. Например, <code>Ctrl+Shift+Esc</code> — и назначаешь команду: <strong>«Диспетчер задач»</strong>. Теперь одно слово заменяет три нажатия.</p>
+
+                <h4 style="margin-top: 1.5rem;">4. <strong>Управление мышью</strong></h4>
+                <p>Хочешь, чтобы курсор сам прыгал в нужное место? Выбираешь <em>Управление мышью</em> → вводишь координаты: <strong>X</strong> и <strong>Y</strong>. Например, X=1000, Y=500 — это середина экрана. Задаёшь команду: <strong>«В центр»</strong> — и курсор мгновенно туда перемещается. Особенно удобно при работе с двумя мониторами или автоматизации кликов.</p>
+            </div>
+
+            <!-- Что такое сценарии -->
+            <div class="guide-section glass-morphism">
+                <h3><i class="fas fa-sync-alt"></i> Что такое сценарии?</h3>
+                <p><strong>Сценарий</strong> — это цепочка команд, которые запускаются <strong>одной фразой</strong>. Как в фильме: ты задаёшь сценарий, а СФЕРА его исполняет.</p>
+
+                <h4>Как создать сценарий:</h4>
+                <ol>
+                    <li>Нажми <strong>«Создать сценарий»</strong>.</li>
+                    <li>Нажми <strong>«Выбрать»</strong> — и перед тобой появятся все твои команды.</li>
+                    <li>Отметь нужные действия, например:
+                        <ul>
+                            <li>Открыть браузер</li>
+                            <li>Запустить музыку</li>
+                            <li>Свернуть все окна</li>
+                            <li>Переместить курсор в поисковую строку</li>
+                        </ul>
+                    </li>
+                    <li>Придумай голосовую команду: <strong>«За работу»</strong>.</li>
+                </ol>
+
+                <p>Теперь скажи: <span class="highlight"><em>«СФЕРА, за работу»</em></span> — и твой компьютер сам подготовится к продуктивному дню.</p>
+
+                <div class="note-box">
+                    <p><strong>Пример из жизни:</strong> Утром говоришь <em>«СФЕРА, доброе утро»</em> — и она включает новости, запускает твой утренний плейлист, показывает погоду. Всё — без единого движения.</p>
                 </div>
             </div>
+
+            <!-- Готовые команды -->
+            <div class="guide-section glass-morphism">
+                <h3><i class="fas fa-bolt"></i> Готовые команды: начни использовать уже сегодня</h3>
+                <p>СФЕРА поставляется с набором встроенных команд — они работают сразу, без настройки:</p>
+                
+                <div class="commands-grid">
+                    <div class="command-item">
+                        <strong>«СФЕРА, время»</strong>
+                        <span>Называет текущее время</span>
+                    </div>
+                    <div class="command-item">
+                        <strong>«СФЕРА, набери»</strong>
+                        <span>Активирует диктовку текста</span>
+                    </div>
+                    <div class="command-item">
+                        <strong>«СФЕРА, сверни все окна»</strong>
+                        <span>Мгновенно прячет все приложения</span>
+                    </div>
+                    <div class="command-item">
+                        <strong>«СФЕРА, включи будильник»</strong>
+                        <span>Устанавливает пробуждение с музыкой</span>
+                    </div>
+                    <div class="command-item">
+                        <strong>«СФЕРА, открой проводник»</strong>
+                        <span>Запускает Проводник</span>
+                    </div>
+                    <div class="command-item">
+                        <strong>«СФЕРА, открой панель управления»</strong>
+                        <span>Открывает системные настройки</span>
+                    </div>
+                    <div class="command-item">
+                        <strong>«СФЕРА, какое сегодня число?»</strong>
+                        <span>Сообщает дату и день недели</span>
+                    </div>
+                    <div class="command-item">
+                        <strong>«СФЕРА, выключи компьютер»</strong>
+                        <span>Завершает сеанс</span>
+                    </div>
+                    <div class="command-item">
+                        <strong>«СФЕРА, перезагрузи компьютер»</strong>
+                        <span>Перезагружает систему</span>
+                    </div>
+                    <div class="command-item">
+                        <strong>«СФЕРА, в трей»</strong>
+                        <span>Сворачивает интерфейс в фоновый режим</span>
+                    </div>
+                    <div class="command-item">
+                        <strong>«СФЕРА, покажись»</strong>
+                        <span>Возвращает окно на экран</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Кому подойдет -->
+            <div class="guide-section glass-morphism">
+                <h3><i class="fas fa-star"></i> Кому подойдёт СФЕРА?</h3>
+                <ul>
+                    <li><strong>Работающим</strong> — чтобы автоматизировать рутину и сосредоточиться на главном.</li>
+                    <li><strong>Студентам</strong> — для диктовки конспектов, быстрого доступа к учебным сайтам.</li>
+                    <li><strong>Творческим людям</strong> — мгновенный запуск редакторов, плейлистов, инструментов.</li>
+                    <li><strong>Всем, кто ценит своё время и хочет работать с комфортом.</strong></li>
+                </ul>
+            </div>
+
+            <!-- Заключение -->
+            <div class="guide-section glass-morphism" style="background: linear-gradient(135deg, rgba(109, 40, 217, 0.1), rgba(236, 72, 153, 0.1));">
+                <h3><i class="fas fa-trophy"></i> Заключение</h3>
+                <p><strong>СФЕРА</strong> — это не просто программа. Это <strong>твой голосовой мост к компьютеру</strong>, где каждое слово становится действием.</p>
+                <p>Ты создаёшь <strong>свой уникальный цифровой опыт</strong>: от простых фраз до сложных автоматизаций. Говори — и мир технологий откликается.</p>
+                
+                <blockquote>
+                    <strong>СФЕРА слышит. СФЕРА понимает. СФЕРА делает.</strong>
+                </blockquote>
+                
+                <p>Начни уже сегодня — и почувствуй, как технологии начинают служить тебе по-настоящему.</p>
+            </div>
         </div>
     </section>
 
-    <!-- Статистика -->
-    <section>
-        <div class="stats-grid">
-            <div class="stat-item glass-morphism">
-                <div class="stat-number">98%</div>
-                <div class="stat-label">Точность распознавания</div>
-            </div>
-            <div class="stat-item glass-morphism">
-                <div class="stat-number">0.2с</div>
-                <div class="stat-label">Скорость ответа</div>
-            </div>
-            <div class="stat-item glass-morphism">
-                <div class="stat-number">50+</div>
-                <div class="stat-label">Поддерживаемых языков</div>
-            </div>
-            <div class="stat-item glass-morphism">
-                <div class="stat-number">∞</div>
-                <div class="stat-label">Возможностей</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Функции -->
-    <section id="features" style="background: radial-gradient(ellipse at 50% 0%, rgba(30, 27, 75, 0.3) 0%, transparent 70%);">
+    <!-- Возможности -->
+    <section id="features">
         <div class="section-header">
-            <h2 class="section-title gradient-text">Мощные возможности</h2>
-            <p class="section-subtitle">СФЕРА предлагает полный набор функций для автоматизации вашей работы и развлечений</p>
+            <h2 class="section-title gradient-text">Основные возможности</h2>
+            <p class="section-subtitle">СФЕРА предлагает полный набор функций для автоматизации работы с компьютером</p>
         </div>
 
         <div class="features-grid">
             <div class="feature-card glass-morphism hover-lift">
                 <div class="feature-icon">
-                    <i class="fas fa-brain"></i>
+                    <i class="fas fa-microphone-alt"></i>
                 </div>
-                <h3>Искусственный интеллект</h3>
-                <p>Продвинутый ИИ понимает контекст и учится на ваших предпочтениях, становясь умнее с каждым днем.</p>
+                <h3>Голосовое управление</h3>
+                <p>Управляйте любыми приложениями и функциями компьютера с помощью голосовых команд</p>
             </div>
 
             <div class="feature-card glass-morphism hover-lift">
                 <div class="feature-icon">
-                    <i class="fas fa-home"></i>
+                    <i class="fas fa-keyboard"></i>
                 </div>
-                <h3>Умный дом</h3>
-                <p>Управляйте освещением, климатом и безопасностью вашего дома с помощью голосовых команд.</p>
+                <h3>Автоматизация клавиш</h3>
+                <p>Назначайте сложные комбинации клавиш на простые голосовые команды</p>
             </div>
 
             <div class="feature-card glass-morphism hover-lift">
                 <div class="feature-icon">
-                    <i class="fas fa-robot"></i>
+                    <i class="fas fa-mouse-pointer"></i>
                 </div>
-                <h3>Автоматизация</h3>
-                <p>Создавайте сложные сценарии для автоматизации рутинных задач одним голосовым командованием.</p>
+                <h3>Управление курсором</h3>
+                <p>Перемещайте мышь и кликайте в нужных местах экрана голосом</p>
             </div>
 
             <div class="feature-card glass-morphism hover-lift">
                 <div class="feature-icon">
-                    <i class="fas fa-music"></i>
+                    <i class="fas fa-list-alt"></i>
                 </div>
-                <h3>Мультимедиа</h3>
-                <p>Управляйте музыкой, видео и фильмами на всех популярных платформах без прикосновения к мышке.</p>
+                <h3>Сценарии действий</h3>
+                <p>Создавайте сложные последовательности команд, запускаемые одной фразой</p>
             </div>
 
             <div class="feature-card glass-morphism hover-lift">
                 <div class="feature-icon">
-                    <i class="fas fa-chart-line"></i>
+                    <i class="fas fa-clock"></i>
                 </div>
-                <h3>Продуктивность</h3>
-                <p>Планируйте задачи, управляйте календарем и почтой, диктуйте документы голосом.</p>
+                <h3>Умные напоминания</h3>
+                <p>Будильники, таймеры и напоминания, интегрированные в систему</p>
             </div>
 
             <div class="feature-card glass-morphism hover-lift">
                 <div class="feature-icon">
-                    <i class="fas fa-shield-alt"></i>
+                    <i class="fas fa-cogs"></i>
                 </div>
-                <h3>Безопасность</h3>
-                <p>Биометрическая аутентификация и локальная обработка данных гарантируют вашу конфиденциальность.</p>
+                <h3>Системное управление</h3>
+                <p>Полный контроль над системными функциями Windows через голос</p>
             </div>
         </div>
     </section>
 
     <!-- Демо -->
-    <section id="demo" class="glass-dark">
+    <section id="demo">
         <div class="section-header">
             <h2 class="section-title gradient-text">Демонстрация работы</h2>
             <p class="section-subtitle">Посмотрите, как СФЕРА упрощает повседневные задачи</p>
@@ -1132,39 +1207,49 @@
                 <div class="terminal-content">
                     <div class="terminal-line">
                         <span class="terminal-prompt">$</span>
-                        <span>СФЕРА, включи умный дом</span>
+                        <span>СФЕРА, за работу</span>
                     </div>
                     <div class="terminal-line">
-                        <span>> Освещение включено ✓</span>
+                        <span>> Браузер открыт ✓</span>
                     </div>
                     <div class="terminal-line">
-                        <span>> Кондиционер установлен на 22°C ✓</span>
+                        <span>> Музыка запущена ✓</span>
                     </div>
                     <div class="terminal-line">
-                        <span>> Камера безопасности активирована ✓</span>
+                        <span>> Окна свёрнуты ✓</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span>> Курсор перемещён в поисковую строку ✓</span>
                     </div>
                     <div class="terminal-line" style="margin-top: 2rem;">
                         <span class="terminal-prompt">$</span>
-                        <span>СФЕРА, найди рецепт пасты</span>
+                        <span>СФЕРА, время</span>
                     </div>
                     <div class="terminal-line">
-                        <span>> Найдено 15 рецептов. Открываю лучший...</span>
+                        <span>> Сейчас 14:30 ✓</span>
+                    </div>
+                    <div class="terminal-line" style="margin-top: 2rem;">
+                        <span class="terminal-prompt">$</span>
+                        <span>СФЕРА, набери письмо</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span>> Режим диктовки активирован ✓</span>
                     </div>
                 </div>
             </div>
             <div>
                 <h3 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Просто скажите, что вам нужно</h3>
                 <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem; line-height: 1.7;">
-                    СФЕРА понимает естественную речь и контекст. Вы можете говорить так, как будто общаетесь с живым помощником.
+                    СФЕРА понимает естественную речь и контекст. Вы можете говорить так, как будто общаетесь с живым помощником. Система постоянно обучается и адаптируется под ваши предпочтения.
                 </p>
                 <ul style="list-style: none; color: rgba(255, 255, 255, 0.8);">
                     <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
                         <i class="fas fa-check" style="color: var(--accent);"></i>
-                        Распознавание с акцентом и в шумной среде
+                        Распознавание речи с акцентом и в шумной среде
                     </li>
                     <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
                         <i class="fas fa-check" style="color: var(--accent);"></i>
-                        Мультиязычная поддержка
+                        Поддержка русского языка с полным пониманием контекста
                     </li>
                     <li style="display: flex; align-items: center; gap: 10px;">
                         <i class="fas fa-check" style="color: var(--accent);"></i>
@@ -1175,138 +1260,20 @@
         </div>
     </section>
 
-    <!-- Технологии -->
-    <section id="tech">
-        <div class="section-header">
-            <h2 class="section-title gradient-text">Передовые технологии</h2>
-            <p class="section-subtitle">Основано на самых современных достижениях ИИ и машинного обучения</p>
-        </div>
-
-        <div class="features-grid">
-            <div class="feature-card neon-border">
-                <div class="feature-icon">
-                    <i class="fas fa-network-wired"></i>
-                </div>
-                <h3>Нейронные сети</h3>
-                <p>Глубокое обучение позволяет СФЕРЕ понимать сложные запросы и контекст разговора.</p>
-            </div>
-
-            <div class="feature-card neon-border">
-                <div class="feature-icon">
-                    <i class="fas fa-language"></i>
-                </div>
-                <h3>NLP обработка</h3>
-                <p>Обработка естественного языка для понимания смысла, а не просто ключевых слов.</p>
-            </div>
-
-            <div class="feature-card neon-border">
-                <div class="feature-icon">
-                    <i class="fas fa-cloud"></i>
-                </div>
-                <h3>Облачные вычисления</h3>
-                <p>Мощные серверы обеспечивают мгновенную обработку даже самых сложных запросов.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Отзывы -->
-    <section id="testimonials" style="background: radial-gradient(ellipse at 50% 100%, rgba(30, 27, 75, 0.3) 0%, transparent 70%);">
-        <div class="section-header">
-            <h2 class="section-title gradient-text">Что говорят пользователи</h2>
-            <p class="section-subtitle">Тысячи людей уже доверили СФЕРЕ управление своими цифровыми мирами</p>
-        </div>
-
-        <div class="features-grid">
-            <div class="feature-card glass-morphism">
-                <div class="feature-icon" style="background: var(--gradient-accent);">
-                    <i class="fas fa-user"></i>
-                </div>
-                <p style="font-style: italic; margin-bottom: 1.5rem;">"СФЕРА полностью изменила мой рабочий процесс. Теперь я управляю всеми задачами голосом!"</p>
-                <div style="display: flex; align-items: center; gap: 1rem;">
-                    <div style="width: 50px; height: 50px; background: var(--gradient); border-radius: 50%;"></div>
-                    <div>
-                        <h4 style="color: white;">Алексей К.</h4>
-                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">IT-директор</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="feature-card glass-morphism">
-                <div class="feature-icon" style="background: var(--gradient-accent);">
-                    <i class="fas fa-user"></i>
-                </div>
-                <p style="font-style: italic; margin-bottom: 1.5rem;">"Как человек с ограниченными возможностями, я ценю, насколько СФЕРА упростила мне жизнь."</p>
-                <div style="display: flex; align-items: center; gap: 1rem;">
-                    <div style="width: 50px; height: 50px; background: var(--gradient); border-radius: 50%;"></div>
-                    <div>
-                        <h4 style="color: white;">Мария С.</h4>
-                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">Фрилансер</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq">
-        <div class="section-header">
-            <h2 class="section-title gradient-text">Частые вопросы</h2>
-            <p class="section-subtitle">Ответы на самые популярные вопросы о СФЕРЕ</p>
-        </div>
-
-        <div class="faq-container">
-            <div class="faq-item glass-morphism">
-                <div class="faq-question">
-                    <h3>Какие системные требования?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Windows 10/11, macOS 11+, Linux. Требуется микрофон и стабильное интернет-соединение. Минимум 4 ГБ ОЗУ.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item glass-morphism">
-                <div class="faq-question">
-                    <h3>Безопасны ли мои данные?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Все данные шифруются и обрабатываются с соблюдением строгих стандартов безопасности. Мы не храним личные разговоры.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item glass-morphism">
-                <div class="faq-question">
-                    <h3>Можно ли использовать офлайн?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Базовые функции работают офлайн. Для сложных запросов и обновлений требуется подключение к интернету.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Скачать -->
     <section id="download" style="text-align: center;">
         <div class="section-header">
             <h2 class="section-title gradient-text">Начните использовать СФЕРУ сегодня</h2>
-            <p class="section-subtitle">Скачайте бесплатно и откройте новый уровень взаимодействия с технологиями</p>
+            <p class="section-subtitle">Скачайте бесплатно и откройте новый уровень взаимодействия с компьютером</p>
         </div>
 
         <div style="max-width: 800px; margin: 0 auto;">
-            <div class="feature-card glass-morphism" style="padding: 4rem;">
-                <div class="feature-icon" style="margin: 0 auto 2rem; width: 100px; height: 100px;">
+            <div class="guide-section glass-morphism" style="padding: 4rem;">
+                <div style="width: 100px; height: 100px; background: var(--gradient); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; font-size: 3rem; color: white;">
                     <i class="fas fa-download"></i>
                 </div>
                 <h3 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Скачать СФЕРУ</h3>
-                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 3rem;">
+                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 3rem; font-size: 1.2rem;">
                     Установка займет менее 2 минут. Начните говорить со своим компьютером прямо сейчас!
                 </p>
                 <a href="#download" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.5rem 3rem;">
@@ -1314,7 +1281,7 @@
                     Скачать бесплатно
                 </a>
                 <p style="color: rgba(255, 255, 255, 0.6); margin-top: 2rem; font-size: 0.9rem;">
-                    Версия 2.0 • Windows 10/11 • macOS • Linux • 150 МБ
+                    Версия 2.0 • Windows 10/11 • 150 МБ • Бесплатно
                 </p>
             </div>
         </div>
@@ -1326,7 +1293,7 @@
             <div class="footer-brand">
                 <div class="footer-logo">СФЕРА</div>
                 <p style="color: rgba(255, 255, 255, 0.7);">
-                    Голосовой помощник нового поколения. Переосмысление взаимодействия человека и машины.
+                    Голосовой помощник нового поколения. Переосмысление взаимодействия человека и компьютера.
                 </p>
                 <div class="footer-social">
                     <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
@@ -1336,20 +1303,20 @@
                 </div>
             </div>
             <div>
-                <h3 style="color: white; margin-bottom: 1.5rem;">Продукт</h3>
+                <h3 style="color: white; margin-bottom: 1.5rem;">Навигация</h3>
                 <ul style="list-style: none; color: rgba(255, 255, 255, 0.7);">
+                    <li style="margin-bottom: 0.8rem;"><a href="#home" style="color: inherit; text-decoration: none;">Главная</a></li>
+                    <li style="margin-bottom: 0.8rem;"><a href="#guide" style="color: inherit; text-decoration: none;">Руководство</a></li>
                     <li style="margin-bottom: 0.8rem;"><a href="#features" style="color: inherit; text-decoration: none;">Возможности</a></li>
-                    <li style="margin-bottom: 0.8rem;"><a href="#demo" style="color: inherit; text-decoration: none;">Демо</a></li>
-                    <li style="margin-bottom: 0.8rem;"><a href="#tech" style="color: inherit; text-decoration: none;">Технологии</a></li>
-                    <li><a href="#download" style="color: inherit; text-decoration: none;">Скачать</a></li>
+                    <li><a href="#demo" style="color: inherit; text-decoration: none;">Демо</a></li>
                 </ul>
             </div>
             <div>
                 <h3 style="color: white; margin-bottom: 1.5rem;">Поддержка</h3>
                 <ul style="list-style: none; color: rgba(255, 255, 255, 0.7);">
-                    <li style="margin-bottom: 0.8rem;"><a href="#faq" style="color: inherit; text-decoration: none;">FAQ</a></li>
                     <li style="margin-bottom: 0.8rem;"><a href="#" style="color: inherit; text-decoration: none;">Документация</a></li>
-                    <li style="margin-bottom: 0.8rem;"><a href="#" style="color: inherit; text-decoration: none;">Сообщество</a></li>
+                    <li style="margin-bottom: 0.8rem;"><a href="#" style="color: inherit; text-decoration: none;">Форум</a></li>
+                    <li style="margin-bottom: 0.8rem;"><a href="#" style="color: inherit; text-decoration: none;">Блог</a></li>
                     <li><a href="#" style="color: inherit; text-decoration: none;">Контакты</a></li>
                 </ul>
             </div>
@@ -1413,33 +1380,11 @@
                 });
             }, observerOptions);
             
-            document.querySelectorAll('.feature-card, .stat-item').forEach(el => {
+            document.querySelectorAll('.feature-card, .guide-section').forEach(el => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(30px)';
                 el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(el);
-            });
-        }
-
-        // Аккордеон FAQ
-        function initFAQ() {
-            document.querySelectorAll('.faq-question').forEach(question => {
-                question.addEventListener('click', () => {
-                    const answer = question.nextElementSibling;
-                    const isActive = answer.classList.contains('active');
-                    
-                    // Закрываем все
-                    document.querySelectorAll('.faq-answer').forEach(ans => {
-                        ans.classList.remove('active');
-                        ans.previousElementSibling.querySelector('i').className = 'fas fa-chevron-down';
-                    });
-                    
-                    // Открываем текущий, если был закрыт
-                    if (!isActive) {
-                        answer.classList.add('active');
-                        question.querySelector('i').className = 'fas fa-chevron-up';
-                    }
-                });
             });
         }
 
@@ -1492,17 +1437,17 @@
         document.addEventListener('DOMContentLoaded', () => {
             initParticles();
             initSplashScreen();
-            initFAQ();
             initSmoothScroll();
             initActiveMenu();
             
             // Имитация загрузки файла
-            document.querySelector('.btn-primary[href="#download"]').addEventListener('click', function(e) {
-                if (this.getAttribute('href') === '#download') {
-                    e.preventDefault();
-                    alert('Начинается загрузка СФЕРЫ...\nРазмер файла: 150 МБ\nСпасибо за ваш интерес!');
-                    // В реальном приложении здесь будет window.location.href = 'download-link';
-                }
+            document.querySelectorAll('.btn-primary[href="#download"]').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') === '#download') {
+                        e.preventDefault();
+                        alert('Начинается загрузка СФЕРЫ...\nРазмер файла: 150 МБ\nСпасибо за ваш интерес!');
+                    }
+                });
             });
         });
 
@@ -1517,4 +1462,4 @@
         });
     </script>
 </body>
-</html>Ы
+</html>
