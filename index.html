@@ -8,19 +8,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a1f36;
-            --secondary: #4a6cf7;
-            --accent: #6c5ce7;
-            --accent2: #fd79a8;
+            --primary: #0f1424;
+            --secondary: #6d28d9;
+            --accent: #ec4899;
+            --accent2: #3b82f6;
             --light: #ffffff;
-            --dark: #0f1424;
-            --gradient: linear-gradient(135deg, #4a6cf7, #6c5ce7);
-            --gradient-dark: linear-gradient(135deg, #1a1f36, #4a6cf7);
-            --gradient-accent: linear-gradient(135deg, #6c5ce7, #fd79a8);
-            --gradient-light: linear-gradient(135deg, #4a6cf7, #00cec9);
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+            --dark: #0a0f1f;
+            --gradient: linear-gradient(135deg, #6d28d9, #ec4899);
+            --gradient-dark: linear-gradient(135deg, #0f1424, #1e293b);
+            --gradient-accent: linear-gradient(135deg, #ec4899, #3b82f6);
+            --gradient-light: linear-gradient(135deg, #3b82f6, #06b6d4);
+            --glass-bg: rgba(255, 255, 255, 0.07);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            --neon-glow: 0 0 20px rgba(109, 40, 217, 0.5);
         }
 
         * {
@@ -31,302 +32,298 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
 
         body {
             font-family: 'Raleway', sans-serif;
             background-color: var(--dark);
             color: var(--light);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
-            background: linear-gradient(-45deg, #0f1424, #1a1f36, #2d374d, #1a1f36);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+            background: radial-gradient(ellipse at top, #1e1b4b 0%, #0f172a 50%, #020617 100%);
+            min-height: 100vh;
         }
 
         h1, h2, h3, h4, h5 {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
-        /* Анимации */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        /* Новые анимации */
+        @keyframes float3d {
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
             }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            25% {
+                transform: translateY(-20px) translateX(10px) rotate(5deg);
             }
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-
             50% {
-                transform: translateY(-20px) rotate(5deg);
+                transform: translateY(-10px) translateX(-10px) rotate(-5deg);
             }
-
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(74, 108, 247, 0.7);
-            }
-
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 20px rgba(74, 108, 247, 0);
-            }
-
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(74, 108, 247, 0);
+            75% {
+                transform: translateY(-15px) translateX(5px) rotate(3deg);
             }
         }
 
-        @keyframes glow {
+        @keyframes shimmer {
             0% {
-                box-shadow: 0 0 10px rgba(74, 108, 247, 0.7);
+                background-position: -1000px 0;
             }
-
-            50% {
-                box-shadow: 0 0 30px rgba(74, 108, 247, 0.9);
-            }
-
             100% {
-                box-shadow: 0 0 10px rgba(74, 108, 247, 0.7);
+                background-position: 1000px 0;
             }
         }
 
         @keyframes gradientShift {
             0% {
-                background-position: 0% 50%;
+                background-position: 0% 0%;
             }
-
             50% {
-                background-position: 100% 50%;
+                background-position: 100% 100%;
             }
-
             100% {
-                background-position: 0% 50%;
+                background-position: 0% 0%;
             }
         }
 
-        @keyframes voiceWave {
+        @keyframes neonPulse {
             0%, 100% {
-                height: 15px;
+                box-shadow: 0 0 5px var(--secondary),
+                           0 0 10px var(--secondary),
+                           0 0 20px var(--secondary);
             }
-
             50% {
-                height: 40px;
+                box-shadow: 0 0 10px var(--secondary),
+                           0 0 20px var(--secondary),
+                           0 0 40px var(--secondary);
             }
         }
 
-        @keyframes typing {
+        @keyframes slideInLeft {
             from {
-                width: 0
+                opacity: 0;
+                transform: translateX(-50px) rotateY(-20deg);
             }
-
             to {
-                width: 100%
+                opacity: 1;
+                transform: translateX(0) rotateY(0);
             }
         }
 
-        @keyframes blink {
-            from, to {
-                border-color: transparent
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px) rotateY(20deg);
             }
+            to {
+                opacity: 1;
+                transform: translateX(0) rotateY(0);
+            }
+        }
 
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes glowOrb {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
             50% {
-                border-color: var(--secondary)
+                transform: scale(1.1);
+                opacity: 1;
             }
         }
 
-        @keyframes ripple {
+        @keyframes particleFloat {
             0% {
-                transform: scale(0);
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
                 opacity: 1;
             }
-
+            90% {
+                opacity: 1;
+            }
             100% {
-                transform: scale(4);
+                transform: translateY(-100vh) translateX(100px) rotate(360deg);
                 opacity: 0;
             }
         }
 
-        /* Анимации для заставки */
-        @keyframes splashFadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+        /* Новые классы для улучшений */
+        .shimmer-text {
+            background: linear-gradient(90deg, #fff, var(--secondary), #fff);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s infinite linear;
         }
 
-        @keyframes splashFadeOut {
-            from {
-                opacity: 1;
-            }
-
-            to {
-                opacity: 0;
-            }
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        @keyframes splashScaleIn {
-            from {
-                transform: translate(-50%, -50%) scale(0.8);
-                opacity: 0;
-            }
-
-            to {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 1;
-            }
+        .glass-morphism {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            border-radius: 24px;
         }
 
-        @keyframes imageSlowFadeIn {
-            0% {
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(0.9);
-            }
-
-            50% {
-                opacity: 0.5;
-                transform: translate(-50%, -50%) scale(0.95);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1);
-            }
+        .neon-border {
+            position: relative;
+            border: 2px solid transparent;
+            background: linear-gradient(var(--dark), var(--dark)) padding-box,
+                        var(--gradient) border-box;
+            border-radius: 24px;
         }
 
-        /* Стили для заставки */
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Заставка - полностью переработанная */
         .splash-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #000;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
             opacity: 1;
+            transition: opacity 1s ease, visibility 1s ease;
         }
 
-            .splash-screen.fade-out {
-                opacity: 0;
-                transition: opacity 1s ease;
-                pointer-events: none;
-            }
+        .splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
 
-        .splash-content {
+        .splash-container {
             text-align: center;
+            position: relative;
             width: 100%;
             height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .splash-orb {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at 30% 30%, 
+                rgba(109, 40, 217, 0.8) 0%,
+                rgba(109, 40, 217, 0.4) 30%,
+                rgba(109, 40, 217, 0.1) 70%,
+                transparent 100%);
+            border-radius: 50%;
+            position: absolute;
+            animation: glowOrb 4s ease-in-out infinite;
+            filter: blur(40px);
+        }
+
+        .splash-logo {
+            font-size: 8rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
             position: relative;
+            z-index: 2;
+            background: linear-gradient(45deg, 
+                #fff 0%,
+                var(--secondary) 30%,
+                var(--accent) 70%,
+                #fff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 4s infinite linear;
         }
 
-        .splash-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            width: 100%;
-            opacity: 0;
-        }
-
-        .splash-text-1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: 3px;
-        }
-
-        .splash-text-2 {
+        .splash-subtitle {
             font-size: 2.5rem;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .splash-text-3 {
-            font-size: 2rem;
             font-weight: 300;
-            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 2px;
         }
 
-        .splash-image {
+        .splash-loader {
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+            margin-top: 3rem;
+        }
+
+        .splash-loader::after {
+            content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
+            top: 0;
+            left: 0;
+            height: 100%;
             width: 100%;
-            opacity: 0;
+            background: var(--gradient);
+            transform: translateX(-100%);
+            animation: shimmer 2s ease-in-out infinite;
         }
 
-            .splash-image img {
-                max-width: 1100px;
-                width: 100%;
-                height: auto;
-                filter: drop-shadow(0 0 40px rgba(74, 108, 247, 0.8));
-            }
-
-        /* Стили для эффекта стекла */
-        .glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-        }
-
-        .glass-dark {
-            background: rgba(15, 20, 36, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: var(--glass-shadow);
-        }
-
-        /* Навигация */
+        /* Навигация - улучшенная */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            padding: 1.5rem 0;
-            transition: all 0.3s ease;
+            padding: 1.2rem 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(10, 15, 31, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-            nav.scrolled {
-                background: rgba(15, 20, 36, 0.9);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                padding: 1rem 0;
-                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            }
+        nav.scrolled {
+            padding: 0.8rem 0;
+            background: rgba(10, 15, 31, 0.9);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
 
         .nav-container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -334,521 +331,377 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(to right, #fff, var(--secondary), var(--accent));
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #fff, var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float3d 6s ease-in-out infinite;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
+            align-items: center;
         }
 
-            .nav-links a {
-                color: var(--light);
-                text-decoration: none;
-                font-weight: 500;
-                transition: all 0.3s ease;
-                position: relative;
-            }
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
 
-                .nav-links a:hover {
-                    color: var(--secondary);
-                }
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
 
-                .nav-links a::after {
-                    content: '';
-                    position: absolute;
-                    width: 0;
-                    height: 2px;
-                    bottom: -5px;
-                    left: 0;
-                    background: var(--gradient);
-                    transition: width 0.3s ease;
-                }
+        .nav-links a:hover {
+            color: #fff;
+        }
 
-                .nav-links a:hover::after {
-                    width: 100%;
-                }
+        .nav-links a:hover::before {
+            width: 100%;
+        }
 
-        /* Герой секция */
+        .nav-links a.active {
+            color: #fff;
+        }
+
+        .nav-links a.active::before {
+            width: 100%;
+        }
+
+        /* Герой секция - полный редизайн */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 5%;
             position: relative;
             overflow: hidden;
-            opacity: 0;
+            padding-top: 100px;
         }
 
-            .hero.show {
-                opacity: 1;
-                animation: fadeIn 1s ease forwards;
-            }
-
-        .hero-content {
-            max-width: 800px;
-            z-index: 2;
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.8);
-            letter-spacing: 1px;
-        }
-
-        .hero-logo {
-            font-size: 5rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(to right, #fff, var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.1;
-        }
-
-        .hero-tagline {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            font-weight: 300;
-        }
-
-        .typewriter {
-            overflow: hidden;
-            border-right: .15em solid var(--secondary);
-            white-space: nowrap;
-            margin: 0 auto 2rem;
-            letter-spacing: .10em;
-            animation: typing 3.5s steps(40, end), blink 1s step-end infinite;
-            max-width: 530px;
-            font-size: 1.2rem;
-            color: var(--secondary);
-            font-weight: 500;
-        }
-
-        .voice-wave {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            margin: 2rem 0;
-        }
-
-        .voice-bar {
-            width: 6px;
-            height: 25px;
-            background: var(--gradient);
-            border-radius: 3px;
-            animation: voiceWave 1.5s ease-in-out infinite;
-        }
-
-            .voice-bar:nth-child(2) {
-                animation-delay: 0.1s;
-            }
-
-            .voice-bar:nth-child(3) {
-                animation-delay: 0.2s;
-            }
-
-            .voice-bar:nth-child(4) {
-                animation-delay: 0.3s;
-            }
-
-            .voice-bar:nth-child(5) {
-                animation-delay: 0.4s;
-            }
-
-        .btn {
-            display: inline-block;
-            background: var(--gradient);
-            color: white;
-            padding: 1.2rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.2rem;
-            transition: all 0.4s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(74, 108, 247, 0.4);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-            .btn:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 12px 25px rgba(74, 108, 247, 0.6);
-            }
-
-            .btn:active {
-                transform: translateY(-2px);
-            }
-
-            .btn::after {
-                content: '';
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                background: rgba(255, 255, 255, 0.2);
-                top: 0;
-                left: -100%;
-                transform: skewX(-30deg);
-                transition: left 0.6s ease;
-                z-index: -1;
-            }
-
-            .btn:hover::after {
-                left: 100%;
-            }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid var(--secondary);
-            box-shadow: none;
-        }
-
-            .btn-secondary:hover {
-                background: var(--secondary);
-                color: white;
-                transform: translateY(-5px);
-                box-shadow: 0 12px 25px rgba(74, 108, 247, 0.6);
-            }
-
-        /* Эффект капли */
-        .ripple {
+        .hero-bg {
             position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.6);
-            transform: scale(0);
-            animation: ripple 0.6s linear;
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(109, 40, 217, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            animation: gradientShift 20s ease infinite;
+            background-size: 400% 400%;
         }
 
-        .ripple-button {
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Секции */
-        section {
-            padding: 6rem 5%;
-            position: relative;
-        }
-
-        .section-content {
+        .hero-container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            background: linear-gradient(to right, var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            opacity: 0.8;
-            text-align: center;
-        }
-
-        /* Карточки функций */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-item {
-            padding: 2.5rem;
-            border-radius: 20px;
-            transition: all 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
             position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-            .feature-item.visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            .feature-item:hover {
-                transform: translateY(-10px);
-            }
-
-            .feature-item i {
-                font-size: 3rem;
-                margin-bottom: 1.5rem;
-                background: var(--gradient);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-            }
-
-            .feature-item h3 {
-                font-size: 1.5rem;
-                margin-bottom: 1rem;
-            }
-
-            .feature-item p {
-                opacity: 0.8;
-            }
-
-        /* Технологии */
-        .tech-stack {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .tech-item {
-            padding: 1.5rem 2rem;
-            border-radius: 15px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-            .tech-item.visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            .tech-item:hover {
-                transform: translateY(-5px);
-            }
-
-        /* Демо */
-        .demo-container {
+            z-index: 2;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
-            margin-top: 3rem;
         }
 
-        .demo-text {
-            opacity: 0;
-            transform: translateX(-50px);
+        .hero-content {
+            animation: slideInLeft 1s ease-out;
         }
 
-            .demo-text.visible {
-                opacity: 1;
-                transform: translateX(0);
-            }
-
-            .demo-text h3 {
-                font-size: 2rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .demo-text p {
-                margin-bottom: 1.5rem;
-                opacity: 0.8;
-            }
-
-        .demo-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transform: translateX(50px);
-        }
-
-            .demo-visual.visible {
-                opacity: 1;
-                transform: translateX(0);
-            }
-
-        .demo-circle {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: var(--gradient);
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            animation: pulse 4s infinite;
-            box-shadow: 0 0 40px rgba(74, 108, 247, 0.5);
-            position: relative;
+            gap: 10px;
         }
 
-            .demo-circle::after {
-                content: '';
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.1);
-                animation: pulse 3s infinite 0.5s;
-            }
-
-            .demo-circle i {
-                font-size: 5rem;
-                color: white;
-                z-index: 2;
-            }
-
-        /* Скачать */
-        .download-section {
-            text-align: center;
-            padding: 5rem 2rem;
-            border-radius: 30px;
-            margin-top: 3rem;
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transform: scale(0.9);
-        }
-
-            .download-section.visible {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            .download-section::before {
-                content: '';
-                position: absolute;
-                width: 200px;
-                height: 200px;
-                background: rgba(255, 255, 255, 0.05);
-                border-radius: 50%;
-                top: -50px;
-                right: -50px;
-            }
-
-            .download-section::after {
-                content: '';
-                position: absolute;
-                width: 150px;
-                height: 150px;
-                background: rgba(255, 255, 255, 0.05);
-                border-radius: 50%;
-                bottom: -50px;
-                left: -50px;
-            }
-
-        .download-icon {
-            font-size: 5rem;
-            background: var(--gradient);
+        .hero-title {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #fff, var(--secondary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 2rem;
-            animation: float 4s ease-in-out infinite;
+            background-clip: text;
         }
 
-        .download-text {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            font-weight: 500;
+        .hero-description {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
         }
 
-        /* Отзывы */
-        .testimonials {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        .hero-visual {
+            animation: slideInRight 1s ease-out 0.3s both;
+            position: relative;
+        }
+
+        .hero-sphere {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle at 30% 30%, 
+                rgba(109, 40, 217, 0.3) 0%,
+                rgba(109, 40, 217, 0.2) 30%,
+                rgba(109, 40, 217, 0.1) 70%,
+                transparent 100%);
+            border-radius: 50%;
+            position: relative;
+            animation: float3d 8s ease-in-out infinite;
+            filter: blur(60px);
+        }
+
+        .hero-interface {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .voice-wave {
+            display: flex;
+            gap: 6px;
+            align-items: flex-end;
+            height: 60px;
+            margin-top: 1rem;
+        }
+
+        .voice-bar {
+            width: 8px;
+            height: 20px;
+            background: var(--gradient);
+            border-radius: 4px;
+            animation: voiceWave 1.5s ease-in-out infinite;
+        }
+
+        .voice-bar:nth-child(2) { animation-delay: 0.1s; }
+        .voice-bar:nth-child(3) { animation-delay: 0.2s; }
+        .voice-bar:nth-child(4) { animation-delay: 0.3s; }
+        .voice-bar:nth-child(5) { animation-delay: 0.4s; }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
             margin-top: 3rem;
         }
 
-        .testimonial-card {
-            padding: 2.5rem;
-            border-radius: 20px;
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
             transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-            .testimonial-card.visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            .testimonial-card:hover {
-                transform: translateY(-10px);
-            }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-
-        .testimonial-author {
-            display: flex;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
             align-items: center;
+            gap: 10px;
         }
 
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        .btn-primary {
             background: var(--gradient);
+            color: white;
+            box-shadow: 0 10px 30px rgba(109, 40, 217, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(109, 40, 217, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        /* Секции - улучшенные */
+        section {
+            padding: 8rem 5%;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* Карточки функций - 3D эффект */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            padding: 3rem;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 1rem;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
             color: white;
-            font-weight: bold;
+            transform: translateZ(30px);
         }
 
-        .author-info h4 {
+        .feature-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
             font-size: 1.1rem;
-            margin-bottom: 0.2rem;
         }
 
-        .author-info p {
-            opacity: 0.7;
-            font-size: 0.9rem;
+        /* Демо секция - интерактивная */
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        /* FAQ */
+        .demo-terminal {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: 'Courier New', monospace;
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.red { background: #ff5f56; }
+        .terminal-dot.yellow { background: #ffbd2e; }
+        .terminal-dot.green { background: #27c93f; }
+
+        .terminal-content {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .terminal-line {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .terminal-prompt {
+            color: var(--accent);
+        }
+
+        /* FAQ - улучшенный аккордеон */
         .faq-container {
-            max-width: 800px;
-            margin: 3rem auto 0;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .faq-item {
-            margin-bottom: 1.5rem;
-            border-radius: 15px;
+            margin-bottom: 1rem;
+            border-radius: 16px;
             overflow: hidden;
-            opacity: 0;
-            transform: translateY(20px);
+            transition: all 0.3s ease;
         }
 
-            .faq-item.visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
         .faq-question {
-            padding: 1.5rem;
+            padding: 1.8rem;
+            background: rgba(255, 255, 255, 0.05);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -856,64 +709,77 @@
             transition: all 0.3s ease;
         }
 
-            .faq-question:hover {
-                background: rgba(255, 255, 255, 0.05);
-            }
-
-            .faq-question h3 {
-                font-size: 1.2rem;
-                margin: 0;
-            }
-
-        .faq-answer {
-            padding: 0 1.5rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
 
-            .faq-answer.active {
-                padding: 0 1.5rem 1.5rem;
-                max-height: 500px;
-            }
+        .faq-question h3 {
+            font-size: 1.3rem;
+            color: white;
+            margin: 0;
+        }
 
-        /* Футер */
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.8rem 1.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        /* Футер - улучшенный */
         footer {
-            padding: 4rem 5% 2rem;
-            margin-top: 4rem;
+            background: rgba(10, 15, 31, 0.9);
+            padding: 5rem 5% 2rem;
+            margin-top: 5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
         .footer-logo {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: var(--gradient);
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #fff, var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .footer-description {
-            opacity: 0.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .social-icons {
+        .footer-social {
             display: flex;
             gap: 1rem;
         }
 
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -922,135 +788,76 @@
             transition: all 0.3s ease;
         }
 
-            .social-icon:hover {
-                background: var(--gradient);
-                transform: translateY(-3px);
-            }
-
-        .footer-links h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
+        .social-link:hover {
+            background: var(--gradient);
+            transform: translateY(-3px);
         }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-            .footer-links a:hover {
-                color: var(--secondary);
-                padding-left: 5px;
-            }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 3rem;
+            margin-top: 3rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.7;
+            color: rgba(255, 255, 255, 0.5);
         }
 
-        /* Фоновые элементы */
-        .floating-sphere {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle at 30% 30%, var(--secondary), var(--dark));
-            border-radius: 50%;
-            top: 10%;
-            right: 5%;
-            animation: float 8s ease-in-out infinite;
-            box-shadow: 0 0 50px rgba(74, 108, 247, 0.8);
-            z-index: 0;
-        }
-
-            .floating-sphere::after {
-                content: '';
-                position: absolute;
-                width: 80px;
-                height: 80px;
-                background: rgba(255, 255, 255, 0.4);
-                border-radius: 50%;
-                top: 25%;
-                left: 20%;
-                filter: blur(10px);
-            }
-
-        .floating-sphere-2 {
-            position: absolute;
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle at 70% 30%, var(--accent), var(--dark));
-            border-radius: 50%;
-            bottom: 10%;
-            left: 5%;
-            animation: float 6s ease-in-out infinite 1s;
-            box-shadow: 0 0 30px rgba(108, 92, 231, 0.6);
-            z-index: 0;
+        /* Партиклы и эффекты */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
         }
 
         .particle {
             position: absolute;
-            background: rgba(255, 255, 255, 0.5);
+            background: var(--gradient);
             border-radius: 50%;
             pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Стили для раздела возможностей */
-        .feature-list ul {
-            list-style-type: none;
-            margin-top: 1.5rem;
-        }
-
-        .feature-list li {
-            margin-bottom: 1.5rem;
-            padding-left: 1rem;
-            border-left: 3px solid var(--secondary);
-        }
-
-        .feature-list ol {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
-        }
-
-            .feature-list ol li {
-                margin-bottom: 0.5rem;
-            }
-
-        .note {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--accent2);
-            margin-top: 1rem;
-        }
-
-        .conclusion-box {
-            background: linear-gradient(135deg, rgba(74, 108, 247, 0.1), rgba(108, 92, 231, 0.1));
-        }
-
-        .signature {
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 1rem;
+            animation: particleFloat 20s linear infinite;
         }
 
         /* Адаптивность */
-        @media (max-width: 1024px) {
-            .hero-logo {
-                font-size: 4rem;
+        @media (max-width: 1200px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
 
-            .splash-text-1 {
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-sphere {
+                width: 400px;
+                height: 400px;
+                margin: 0 auto;
+            }
+
+            .hero-interface {
+                width: 350px;
+                height: 350px;
+            }
+
+            .section-title {
                 font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
             }
 
             .demo-container {
@@ -1062,437 +869,378 @@
                 font-size: 2.5rem;
             }
 
-            .splash-image img {
-                max-width: 600px;
+            .splash-logo {
+                font-size: 5rem;
+            }
+
+            .splash-subtitle {
+                font-size: 1.8rem;
             }
         }
 
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.8rem;
             }
 
-            .hero-logo {
-                font-size: 3rem;
+            .hero-sphere {
+                width: 300px;
+                height: 300px;
             }
 
-            .splash-text-1 {
-                font-size: 2.5rem;
+            .hero-interface {
+                width: 280px;
+                height: 280px;
+                padding: 1.5rem;
             }
 
-            .splash-text-2 {
-                font-size: 2rem;
+            .cta-buttons {
+                flex-direction: column;
             }
 
-            .splash-text-3 {
-                font-size: 1.7rem;
-            }
-
-            .hero-tagline {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
+            .btn {
+                width: 100%;
+                justify-content: center;
             }
 
             .feature-card {
                 padding: 2rem;
             }
 
-                .feature-card h3 {
-                    font-size: 1.5rem;
-                }
-
-                .feature-card p {
-                    font-size: 1rem;
-                }
-
-            .demo-circle {
-                width: 200px;
-                height: 200px;
-            }
-
-                .demo-circle i {
-                    font-size: 3rem;
-                }
-
-            .floating-sphere, .floating-sphere-2 {
-                display: none;
-            }
-
-            .splash-image img {
-                max-width: 500px;
-                width: 85%;
+            .section-title {
+                font-size: 2rem;
             }
         }
 
-        @media (max-width: 480px) {
-            .btn {
-                padding: 1rem 2rem;
-                font-size: 1rem;
-            }
+        /* Новые элементы UI */
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--gradient);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
 
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem auto;
+            max-width: 1200px;
+        }
 
-            .feature-item {
-                padding: 2rem 1.5rem;
-            }
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            transition: all 0.3s ease;
+        }
 
-            .splash-text-1 {
-                font-size: 2rem;
-            }
+        .stat-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-5px);
+        }
 
-            .splash-text-2 {
-                font-size: 1.7rem;
-            }
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
 
-            .splash-text-3 {
-                font-size: 1.4rem;
-            }
-
-            .splash-image img {
-                max-width: 400px;
-                width: 90%;
-            }
+        .stat-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
         }
     </style>
 </head>
 <body>
+    <!-- Частицы фона -->
+    <div class="particles" id="particles"></div>
+
     <!-- Заставка -->
     <div class="splash-screen" id="splashScreen">
-        <div class="splash-content">
-            <div class="splash-text splash-text-1" id="splashText1">СФЕРА</div>
-            <div class="splash-text splash-text-2" id="splashText2">Голосовой помощник</div>
-            <div class="splash-text splash-text-3" id="splashText3">нового поколения</div>
-            <div class="splash-image" id="splashImage">
-                <img src="C:\Users\MIX PC\Documents\СайтСФЕРА\сфера-no-bg-preview (carve.photos).png" alt="СФЕРА">
-            </div>
+        <div class="splash-container">
+            <div class="splash-orb"></div>
+            <h1 class="splash-logo">СФЕРА</h1>
+            <p class="splash-subtitle">Голосовой помощник нового поколения</p>
+            <div class="splash-loader"></div>
         </div>
     </div>
 
     <!-- Навигация -->
-    <nav class="glass-dark" id="navbar">
+    <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">СФЕРА</div>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                СФЕРА
+            </div>
             <div class="nav-links">
-                <a href="#home">Главная</a>
-                <a href="#features">Функции</a>
-                <a href="#capabilities">Возможности</a>
+                <a href="#home" class="active">Главная</a>
+                <a href="#features">Возможности</a>
                 <a href="#demo">Демо</a>
                 <a href="#tech">Технологии</a>
                 <a href="#testimonials">Отзывы</a>
-                <a href="#faq">FAQ</a>
-                <a href="#download">Скачать</a>
+                <a href="#download" class="btn btn-primary">Скачать</a>
             </div>
         </div>
     </nav>
 
     <!-- Герой секция -->
     <section class="hero" id="home">
-        <div class="hero-content">
-            <p class="hero-subtitle">Ваш голосовой союзник в мире технологий</p>
-            <h1 class="hero-logo">СФЕРА</h1>
-            <p class="hero-tagline">Голосовой помощник нового поколения</p>
-            <div class="typewriter">Будущее голосовых технологий уже здесь</div>
-            <div class="voice-wave">
-                <div class="voice-bar"></div>
-                <div class="voice-bar"></div>
-                <div class="voice-bar"></div>
-                <div class="voice-bar"></div>
-                <div class="voice-bar"></div>
+        <div class="hero-bg"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="badge">НОВОЕ ПОКОЛЕНИЕ</div>
+                <h1 class="hero-title">Голосовой помощник <span class="shimmer-text">СФЕРА</span></h1>
+                <p class="hero-description">
+                    Интеллектуальный ассистент, который понимает ваши команды и выполняет задачи мгновенно.
+                    Управляйте компьютером, приложениями и умным домом одним голосом.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#download" class="btn btn-primary">
+                        <i class="fas fa-download"></i>
+                        Скачать бесплатно
+                    </a>
+                    <a href="#demo" class="btn btn-secondary">
+                        <i class="fas fa-play-circle"></i>
+                        Смотреть демо
+                    </a>
+                </div>
             </div>
-            <p>Приветствую тебя, дорогой пользователь! Спасибо, что выбрал СФЕРУ — твоего нового голосового союзника в мире технологий. В этом руководстве ты узнаешь, как она работает, зачем нужна и как с её помощью сделать каждый день проще и удобнее. Начнём, пожалуй!</p>
-            <div style="margin-top: 2rem;">
-                <a href="#download" class="btn ripple-button">Скачать сейчас</a>
-                <a href="#features" class="btn btn-secondary ripple-button">Узнать больше</a>
+            <div class="hero-visual">
+                <div class="hero-sphere"></div>
+                <div class="hero-interface glass-morphism">
+                    <h3 style="color: white; margin-bottom: 1rem;">Голосовой интерфейс</h3>
+                    <div class="voice-wave">
+                        <div class="voice-bar"></div>
+                        <div class="voice-bar"></div>
+                        <div class="voice-bar"></div>
+                        <div class="voice-bar"></div>
+                        <div class="voice-bar"></div>
+                    </div>
+                    <p style="color: rgba(255, 255, 255, 0.7); margin-top: 1rem; font-size: 0.9rem;">
+                        Скажите: "Привет, СФЕРА" для активации
+                    </p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Фоновые элементы -->
-        <div class="floating-sphere"></div>
-        <div class="floating-sphere-2"></div>
+    <!-- Статистика -->
+    <section>
+        <div class="stats-grid">
+            <div class="stat-item glass-morphism">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Точность распознавания</div>
+            </div>
+            <div class="stat-item glass-morphism">
+                <div class="stat-number">0.2с</div>
+                <div class="stat-label">Скорость ответа</div>
+            </div>
+            <div class="stat-item glass-morphism">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Поддерживаемых языков</div>
+            </div>
+            <div class="stat-item glass-morphism">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Возможностей</div>
+            </div>
+        </div>
     </section>
 
     <!-- Функции -->
-    <section id="features">
-        <div class="section-content">
-            <h2 class="section-title">Возможности СФЕРЫ</h2>
-            <p class="section-subtitle">От поиска информации до управления системой - СФЕРА справляется с любыми задачами благодаря передовым технологиям искусственного интеллекта</p>
-
-            <div class="features-grid">
-                <div class="feature-item glass">
-                    <i class="fas fa-search"></i>
-                    <h3>Мгновенный поиск</h3>
-                    <p>Находит любую информацию в интернете за считанные секунды по вашему голосовому запросу</p>
-                </div>
-                <div class="feature-item glass">
-                    <i class="fas fa-film"></i>
-                    <h3>Умный киноман</h3>
-                    <p>Рекомендует фильмы из базы данных и сразу открывает их для просмотра</p>
-                </div>
-                <div class="feature-item glass">
-                    <i class="fas fa-music"></i>
-                    <h3>Музыкальный эксперт</h3>
-                    <p>Подбирает и включает музыку на Яндекс.Музыке и других платформах</p>
-                </div>
-                <div class="feature-item glass">
-                    <i class="fas fa-newspaper"></i>
-                    <h3>Новости по теме</h3>
-                    <p>Находит и показывает все свежие новости по интересующей вас теме</p>
-                </div>
-                <div class="feature-item glass">
-                    <i class="fas fa-youtube"></i>
-                    <h3>Управление YouTube</h3>
-                    <p>Открывает видео по названию и управляет воспроизведением голосом</p>
-                </div>
-                <div class="feature-item glass">
-                    <i class="fas fa-microphone"></i>
-                    <h3>Диктовка текста</h3>
-                    <p>Позволяет диктовать текст вместо его набора на клавиатуре</p>
-                </div>
-            </div>
+    <section id="features" style="background: radial-gradient(ellipse at 50% 0%, rgba(30, 27, 75, 0.3) 0%, transparent 70%);">
+        <div class="section-header">
+            <h2 class="section-title gradient-text">Мощные возможности</h2>
+            <p class="section-subtitle">СФЕРА предлагает полный набор функций для автоматизации вашей работы и развлечений</p>
         </div>
-    </section>
 
-    <!-- Возможности -->
-    <section id="capabilities" class="glass-dark">
-        <div class="section-content">
-            <h2 class="section-title">Руководство пользователя</h2>
-            <p class="section-subtitle">Всё, что нужно знать о работе с СФЕРОЙ</p>
-
-            <div class="demo-container">
-                <div class="demo-text">
-                    <h3>💡 Зачем нужна СФЕРА? В чём её смысл?</h3>
-                    <p><strong>СФЕРА</strong> — это не просто помощник, который отвечает на вопросы. Это <strong>твой личный голосовой интерфейс к компьютеру</strong>, с помощью которого ты управляешь всем — одним словом.</p>
-                    <p>Представь: не нужно искать иконки, кликать мышкой или запоминать горячие клавиши. Просто скажи — и всё произойдёт. Благодаря гибкой системе <strong>команд</strong> и <strong>сценариев</strong>, ты можешь настроить СФЕРУ под свой ритм жизни и превратить рутину в магию одного голосового запроса.</p>
-
-                    <div class="feature-list">
-                        <h4>🎯 Что такое команды?</h4>
-                        <p><strong>Команда</strong> — это действие, которое СФЕРА выполняет по твоей голосовой фразе. Ты сам решаешь, что она будет делать, выбрав один из четырёх типов:</p>
-
-                        <ul>
-                            <li><strong>1. Приложения</strong><br>Выбираешь тип <em>Приложения</em> → нажимаешь <strong>«Выбрать»</strong> → появляется список всех программ на твоём компьютере. Кликаешь, например, <em>Telegram</em>, и задаёшь голосовую команду: <strong>«Открой чаты»</strong>. Теперь говоришь: <em>«СФЕРА, открой чаты»</em> — и мессенджер запускается мгновенно. Так можно настроить любое приложение: от <em>Блокнота</em> до <em>Photoshop</em>.</li>
-
-                            <li><strong>2. Веб-сайты</strong><br>Нужно на YouTube, в почту или «Яндекс.Новости»? Выбираешь <em>Веб-сайт</em>, вставляешь ссылку (например, <code>https://music.yandex.ru</code>) и назначаешь команду: <strong>«Музыка»</strong>. Сказал — и браузер уже открывает нужную страницу.</li>
-
-                            <li><strong>3. Горячие клавиши</strong><br>Любишь <code>Ctrl+C</code>, <code>Alt+Tab</code> или <code>Win+L</code>? Выбираешь <em>Горячие клавиши</em> → нажимаешь <strong>«Запись»</strong> → зажимаешь нужные клавиши. Например, <code>Ctrl+Shift+Esc</code> — и назначаешь команду: <strong>«Диспетчер задач»</strong>. Теперь одно слово заменяет три нажатия.</li>
-
-                            <li><strong>4. Управление мышью</strong><br>Хочешь, чтобы курсор сам прыгал в нужное место? Выбираешь <em>Управление мышью</em> → вводишь координаты: <strong>X</strong> и <strong>Y</strong>. Например, X=1000, Y=500 — это середина экрана. Задаёшь команду: <strong>«В центр»</strong> — и курсор мгновенно туда перемещается. Особенно удобно при работе с двумя мониторами или автоматизации кликов.</li>
-                        </ul>
-                    </div>
+        <div class="features-grid">
+            <div class="feature-card glass-morphism hover-lift">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
                 </div>
-
-                <div class="demo-visual">
-                    <div class="demo-circle" style="background: var(--gradient-light);">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                </div>
+                <h3>Искусственный интеллект</h3>
+                <p>Продвинутый ИИ понимает контекст и учится на ваших предпочтениях, становясь умнее с каждым днем.</p>
             </div>
 
-            <div class="demo-container" style="margin-top: 4rem;">
-                <div class="demo-visual">
-                    <div class="demo-circle" style="background: var(--gradient-accent);">
-                        <i class="fas fa-sliders-h"></i>
-                    </div>
+            <div class="feature-card glass-morphism hover-lift">
+                <div class="feature-icon">
+                    <i class="fas fa-home"></i>
                 </div>
-                <div class="demo-text">
-                    <h3>🔄 Что такое сценарии?</h3>
-                    <p><strong>Сценарий</strong> — это цепочка команд, которые запускаются <strong>одной фразой</strong>. Как в фильме: ты задаёшь сценарий, а СФЕРА его исполняет.</p>
-
-                    <h4>Как создать сценарий:</h4>
-                    <ol>
-                        <li>Нажми <strong>«Создать сценарий»</strong>.</li>
-                        <li>Нажми <strong>«Выбрать»</strong> — и перед тобой появятся все твои команды.</li>
-                        <li>Отметь нужные действия, например:
-                            <ul>
-                                <li>Открыть браузер</li>
-                                <li>Запустить музыку</li>
-                                <li>Свернуть все окна</li>
-                                <li>Переместить курсор в поисковую строку</li>
-                            </ul>
-                        </li>
-                        <li>Придумай голосовую команду: <strong>«За работу»</strong>.</li>
-                    </ol>
-
-                    <p>Теперь скажи: <em>«СФЕРА, за работу»</em> — и твой компьютер сам подготовится к продуктивному дню.</p>
-
-                    <div class="note">
-                        <strong>Пример из жизни:</strong> Утром говоришь <em>«СФЕРА, доброе утро»</em> — и она включает новости, запускает твой утренний плейлист, показывает погоду и даже включает свет, если он подключён к умному дому. Всё — без единого движения.
-                    </div>
-                </div>
+                <h3>Умный дом</h3>
+                <p>Управляйте освещением, климатом и безопасностью вашего дома с помощью голосовых команд.</p>
             </div>
 
-            <div class="demo-container" style="margin-top: 4rem;">
-                <div class="demo-text">
-                    <h3>⚡ Готовые команды: начни использовать уже сегодня</h3>
-                    <p>СФЕРА поставляется с набором встроенных команд — они работают сразу, без настройки:</p>
-
-                    <div class="features-grid" style="margin-top: 1.5rem;">
-                        <div class="feature-item glass">
-                            <i class="fas fa-clock"></i>
-                            <h3>Время и дата</h3>
-                            <p><em>«СФЕРА, время»</em> — называет текущее время.<br><em>«СФЕРА, какое сегодня число?»</em> — сообщает дату и день недели.</p>
-                        </div>
-                        <div class="feature-item glass">
-                            <i class="fas fa-keyboard"></i>
-                            <h3>Диктовка текста</h3>
-                            <p><em>«СФЕРА, набери»</em> — активирует диктовку: всё, что говоришь, превращается в текст.</p>
-                        </div>
-                        <div class="feature-item glass">
-                            <i class="fas fa-window-minimize"></i>
-                            <h3>Управление окнами</h3>
-                            <p><em>«СФЕРА, сверни все окна»</em> — мгновенно прячет все приложения.</p>
-                        </div>
-                    </div>
-
-                    <div class="features-grid" style="margin-top: 1.5rem;">
-                        <div class="feature-item glass">
-                            <i class="fas fa-alarm-clock"></i>
-                            <h3>Умный будильник</h3>
-                            <p><em>«СФЕРА, включи будильник»</em> — устанавливает пробуждение. За 2 минуты до сигнала компьютер включится, и ты услышишь: <em>«Доброе утро»</em> — и твоя любимая музыка начнёт играть. Отключить: <em>«СФЕРА, я проснулся»</em> или просто нажми любую клавишу.</p>
-                        </div>
-                        <div class="feature-item glass">
-                            <i class="fas fa-desktop"></i>
-                            <h3>Системное управление</h3>
-                            <p><em>«СФЕРА, открой проводник»</em> — запускает Проводник.<br><em>«СФЕРА, открой панель управления»</em> — открывает системные настройки.</p>
-                        </div>
-                        <div class="feature-item glass">
-                            <i class="fas fa-power-off"></i>
-                            <h3>Управление питанием</h3>
-                            <p><em>«СФЕРА, выключи компьютер»</em> — завершает сеанс.<br><em>«СФЕРА, перезагрузи компьютер»</em> — перезагружает систему.</p>
-                        </div>
-                    </div>
+            <div class="feature-card glass-morphism hover-lift">
+                <div class="feature-icon">
+                    <i class="fas fa-robot"></i>
                 </div>
-
-                <div class="demo-visual">
-                    <div class="demo-circle" style="background: var(--gradient);">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                </div>
+                <h3>Автоматизация</h3>
+                <p>Создавайте сложные сценарии для автоматизации рутинных задач одним голосовым командованием.</p>
             </div>
 
-            <div class="conclusion-box glass" style="margin-top: 3rem; padding: 2.5rem; border-radius: 20px;">
-                <h3>🌟 Кому подойдёт СФЕРА?</h3>
-                <ul style="margin: 1.5rem 0; list-style-type: none;">
-                    <li style="margin-bottom: 0.8rem;"><i class="fas fa-briefcase" style="color: var(--secondary); margin-right: 10px;"></i> <strong>Работающим</strong> — чтобы автоматизировать рутину и сосредоточиться на главном.</li>
-                    <li style="margin-bottom: 0.8rem;"><i class="fas fa-graduation-cap" style="color: var(--secondary); margin-right: 10px;"></i> <strong>Студентам</strong> — для диктовки конспектов, быстрого доступа к учебным сайтам.</li>
-                    <li style="margin-bottom: 0.8rem;"><i class="fas fa-palette" style="color: var(--secondary); margin-right: 10px;"></i> <strong>Творческим людям</strong> — мгновенный запуск редакторов, плейлистов, инструментов.</li>
-                    <li><i class="fas fa-users" style="color: var(--secondary); margin-right: 10px;"></i> <strong>Всем, кто ценит своё время и хочет работать с комфортом.</strong></li>
-                </ul>
-
-                <h3 style="margin-top: 2rem;">🎉 Заключение</h3>
-                <p><strong>СФЕРА</strong> — это не просто программа. Это <strong>твой голосовой мост к компьютеру</strong>, где каждое слово становится действием.</p>
-                <p>Ты создаёшь <strong>свой уникальный цифровой опыт</strong>: от простых фраз до сложных автоматизаций. Говори — и мир технологий откликается.</p>
-                
-                <div class="note" style="margin-top: 1.5rem; text-align: center; font-size: 1.2rem;">
-                    <strong>СФЕРА слышит. СФЕРА понимает. СФЕРА делает.</strong>
+            <div class="feature-card glass-morphism hover-lift">
+                <div class="feature-icon">
+                    <i class="fas fa-music"></i>
                 </div>
-                
-                <p style="margin-top: 1.5rem; text-align: center;">Начни уже сегодня — и почувствуй, как технологии начинают служить тебе по-настоящему.</p>
+                <h3>Мультимедиа</h3>
+                <p>Управляйте музыкой, видео и фильмами на всех популярных платформах без прикосновения к мышке.</p>
+            </div>
+
+            <div class="feature-card glass-morphism hover-lift">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Продуктивность</h3>
+                <p>Планируйте задачи, управляйте календарем и почтой, диктуйте документы голосом.</p>
+            </div>
+
+            <div class="feature-card glass-morphism hover-lift">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Безопасность</h3>
+                <p>Биометрическая аутентификация и локальная обработка данных гарантируют вашу конфиденциальность.</p>
             </div>
         </div>
     </section>
 
     <!-- Демо -->
     <section id="demo" class="glass-dark">
-        <div class="section-content">
-            <h2 class="section-title">Как работает СФЕРА?</h2>
-            <p class="section-subtitle">Просто скажите команду, и СФЕРА мгновенно выполнит её, используя передовые технологии искусственного интеллекта</p>
+        <div class="section-header">
+            <h2 class="section-title gradient-text">Демонстрация работы</h2>
+            <p class="section-subtitle">Посмотрите, как СФЕРА упрощает повседневные задачи</p>
+        </div>
 
-            <div class="demo-container">
-                <div class="demo-text">
-                    <h3>Интуитивное голосовое управление</h3>
-                    <p>СФЕРА понимает естественную речь и контекст, что позволяет взаимодействовать с компьютером так же просто, как общаться с живым помощником.</p>
-                    <p>Система постоянно обучается и адаптируется под ваши предпочтения, становясь более точной и полезной с каждым использованием.</p>
-                    <ul style="margin-top: 1.5rem; list-style-type: none;">
-                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: #1abc9c; margin-right: 10px;"></i> Распознавание речи с точностью 98%</li>
-                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: #1abc9c; margin-right: 10px;"></i> Понимание контекста и сложных запросов</li>
-                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: #1abc9c; margin-right: 10px;"></i> Обучение вашим предпочтениям со временем</li>
-                    </ul>
+        <div class="demo-container">
+            <div class="demo-terminal glass-morphism">
+                <div class="terminal-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
                 </div>
-                <div class="demo-visual">
-                    <div class="demo-circle">
-                        <i class="fas fa-microphone"></i>
+                <div class="terminal-content">
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span>
+                        <span>СФЕРА, включи умный дом</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span>> Освещение включено ✓</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span>> Кондиционер установлен на 22°C ✓</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span>> Камера безопасности активирована ✓</span>
+                    </div>
+                    <div class="terminal-line" style="margin-top: 2rem;">
+                        <span class="terminal-prompt">$</span>
+                        <span>СФЕРА, найди рецепт пасты</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span>> Найдено 15 рецептов. Открываю лучший...</span>
                     </div>
                 </div>
+            </div>
+            <div>
+                <h3 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Просто скажите, что вам нужно</h3>
+                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem; line-height: 1.7;">
+                    СФЕРА понимает естественную речь и контекст. Вы можете говорить так, как будто общаетесь с живым помощником.
+                </p>
+                <ul style="list-style: none; color: rgba(255, 255, 255, 0.8);">
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-check" style="color: var(--accent);"></i>
+                        Распознавание с акцентом и в шумной среде
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-check" style="color: var(--accent);"></i>
+                        Мультиязычная поддержка
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-check" style="color: var(--accent);"></i>
+                        Обучение вашему голосу и предпочтениям
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
 
     <!-- Технологии -->
     <section id="tech">
-        <div class="section-content">
-            <h2 class="section-title">Технологии</h2>
-            <p class="section-subtitle">СФЕРА использует передовые технологии для обеспечения максимальной производительности и точности</p>
+        <div class="section-header">
+            <h2 class="section-title gradient-text">Передовые технологии</h2>
+            <p class="section-subtitle">Основано на самых современных достижениях ИИ и машинного обучения</p>
+        </div>
 
-            <div class="tech-stack">
-                <div class="tech-item glass ripple-button">Искусственный интеллект</div>
-                <div class="tech-item glass ripple-button">Нейронные сети</div>
-                <div class="tech-item glass ripple-button">Обработка естественного языка</div>
-                <div class="tech-item glass ripple-button">Машинное обучение</div>
-                <div class="tech-item glass ripple-button">Облачные вычисления</div>
-                <div class="tech-item glass ripple-button">API интеграции</div>
+        <div class="features-grid">
+            <div class="feature-card neon-border">
+                <div class="feature-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3>Нейронные сети</h3>
+                <p>Глубокое обучение позволяет СФЕРЕ понимать сложные запросы и контекст разговора.</p>
             </div>
 
-            <div class="demo-container" style="margin-top: 4rem;">
-                <div class="demo-visual">
-                    <div class="demo-circle" style="background: var(--gradient-accent);">
-                        <i class="fas fa-brain"></i>
-                    </div>
+            <div class="feature-card neon-border">
+                <div class="feature-icon">
+                    <i class="fas fa-language"></i>
                 </div>
-                <div class="demo-text">
-                    <h3>Архитектура системы</h3>
-                    <p>СФЕРА построена на модульной архитектуре, что позволяет легко добавлять новые функции и интегрировать сторонние сервисы.</p>
-                    <p>Основные компоненты системы включают ядро распознавания речи, модуль NLP, систему интеграций и персональный ассистент, адаптирующийся к предпочтениям пользователя.</p>
+                <h3>NLP обработка</h3>
+                <p>Обработка естественного языка для понимания смысла, а не просто ключевых слов.</p>
+            </div>
+
+            <div class="feature-card neon-border">
+                <div class="feature-icon">
+                    <i class="fas fa-cloud"></i>
                 </div>
+                <h3>Облачные вычисления</h3>
+                <p>Мощные серверы обеспечивают мгновенную обработку даже самых сложных запросов.</p>
             </div>
         </div>
     </section>
 
     <!-- Отзывы -->
-    <section id="testimonials" class="glass-dark">
-        <div class="section-content">
-            <h2 class="section-title">Отзывы пользователей</h2>
-            <p class="section-subtitle">Узнайте, что говорят пользователи о СФЕРЕ</p>
+    <section id="testimonials" style="background: radial-gradient(ellipse at 50% 100%, rgba(30, 27, 75, 0.3) 0%, transparent 70%);">
+        <div class="section-header">
+            <h2 class="section-title gradient-text">Что говорят пользователи</h2>
+            <p class="section-subtitle">Тысячи людей уже доверили СФЕРЕ управление своими цифровыми мирами</p>
+        </div>
 
-            <div class="testimonials">
-                <div class="testimonial-card glass">
-                    <div class="testimonial-text">
-                        "СФЕРА полностью изменила мой способ взаимодействия с компьютером. Теперь я могу управлять всеми приложениями голосом, что экономит мне массу времени."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">АК</div>
-                        <div class="author-info">
-                            <h4>Алексей К.</h4>
-                            <p>Фрилансер</p>
-                        </div>
+        <div class="features-grid">
+            <div class="feature-card glass-morphism">
+                <div class="feature-icon" style="background: var(--gradient-accent);">
+                    <i class="fas fa-user"></i>
+                </div>
+                <p style="font-style: italic; margin-bottom: 1.5rem;">"СФЕРА полностью изменила мой рабочий процесс. Теперь я управляю всеми задачами голосом!"</p>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div style="width: 50px; height: 50px; background: var(--gradient); border-radius: 50%;"></div>
+                    <div>
+                        <h4 style="color: white;">Алексей К.</h4>
+                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">IT-директор</p>
                     </div>
                 </div>
-                <div class="testimonial-card glass">
-                    <div class="testimonial-text">
-                        "Как человек с ограниченными возможностями, я очень ценю СФЕРУ. Она позволяет мне полноценно работать за компьютером без использования рук."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">МС</div>
-                        <div class="author-info">
-                            <h4>Мария С.</h4>
-                            <p>Блогер</p>
-                        </div>
-                    </div>
+            </div>
+
+            <div class="feature-card glass-morphism">
+                <div class="feature-icon" style="background: var(--gradient-accent);">
+                    <i class="fas fa-user"></i>
                 </div>
-                <div class="testimonial-card glass">
-                    <div class="testimonial-text">
-                        "Мне нравится, как СФЕРА понимает контекст. Я могу сказать 'найди рецепт пасты' и затем 'покажи видео приготовления' - и она поймет, что речь идет о том же блюде."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">ДИ</div>
-                        <div class="author-info">
-                            <h4>Дмитрий И.</h4>
-                            <p>Шеф-повар</p>
-                        </div>
+                <p style="font-style: italic; margin-bottom: 1.5rem;">"Как человек с ограниченными возможностями, я ценю, насколько СФЕРА упростила мне жизнь."</p>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div style="width: 50px; height: 50px; background: var(--gradient); border-radius: 50%;"></div>
+                    <div>
+                        <h4 style="color: white;">Мария С.</h4>
+                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">Фрилансер</p>
                     </div>
                 </div>
             </div>
@@ -1501,45 +1249,44 @@
 
     <!-- FAQ -->
     <section id="faq">
-        <div class="section-content">
-            <h2 class="section-title">Часто задаваемые вопросы</h2>
+        <div class="section-header">
+            <h2 class="section-title gradient-text">Частые вопросы</h2>
             <p class="section-subtitle">Ответы на самые популярные вопросы о СФЕРЕ</p>
+        </div>
 
-            <div class="faq-container">
-                <div class="faq-item glass">
-                    <div class="faq-question ripple-button">
-                        <h3>Какие системные требования у СФЕРЫ?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>СФЕРА работает на Windows 10 и 11. Для оптимальной работы требуется микрофон, интернет-соединение и минимум 4 ГБ оперативной памяти.</p>
+        <div class="faq-container">
+            <div class="faq-item glass-morphism">
+                <div class="faq-question">
+                    <h3>Какие системные требования?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Windows 10/11, macOS 11+, Linux. Требуется микрофон и стабильное интернет-соединение. Минимум 4 ГБ ОЗУ.
                     </div>
                 </div>
-                <div class="faq-item glass">
-                    <div class="faq-question ripple-button">
-                        <h3>Насколько безопасно использовать СФЕРУ?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Мы серьезно относимся к конфиденциальности. Все голосовые данные обрабатываются локально, когда это возможно, а облачные запросы шифруются. Мы не храним личные данные без вашего разрешения.</p>
+            </div>
+
+            <div class="faq-item glass-morphism">
+                <div class="faq-question">
+                    <h3>Безопасны ли мои данные?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Все данные шифруются и обрабатываются с соблюдением строгих стандартов безопасности. Мы не храним личные разговоры.
                     </div>
                 </div>
-                <div class="faq-item glass">
-                    <div class="faq-question ripple-button">
-                        <h3>Можно ли использовать СФЕРУ офлайн?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Базовые функции, такие как управление системными приложениями и открытие локальных файлов, работают офлайн. Для поиска в интернете и использования онлайн-сервисов требуется подключение к сети.</p>
-                    </div>
+            </div>
+
+            <div class="faq-item glass-morphism">
+                <div class="faq-question">
+                    <h3>Можно ли использовать офлайн?</h3>
+                    <i class="fas fa-chevron-down"></i>
                 </div>
-                <div class="faq-item glass">
-                    <div class="faq-question ripple-button">
-                        <h3>Как часто выходят обновления?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Мы выпускаем обновления каждые 2-3 недели, добавляя новые функции, улучшая точность распознавания и исправляя обнаруженные ошибки.</p>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Базовые функции работают офлайн. Для сложных запросов и обновлений требуется подключение к интернету.
                     </div>
                 </div>
             </div>
@@ -1547,79 +1294,63 @@
     </section>
 
     <!-- Скачать -->
-    <section id="download">
-        <div class="section-content">
-            <h2 class="section-title">Готовы попробовать?</h2>
-            <p class="section-subtitle">Скачайте СФЕРУ прямо сейчас и начните использовать голосового помощника нового поколения</p>
+    <section id="download" style="text-align: center;">
+        <div class="section-header">
+            <h2 class="section-title gradient-text">Начните использовать СФЕРУ сегодня</h2>
+            <p class="section-subtitle">Скачайте бесплатно и откройте новый уровень взаимодействия с технологиями</p>
+        </div>
 
-            <div class="download-section glass">
-                <div class="download-icon">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="feature-card glass-morphism" style="padding: 4rem;">
+                <div class="feature-icon" style="margin: 0 auto 2rem; width: 100px; height: 100px;">
                     <i class="fas fa-download"></i>
                 </div>
-                <h3 class="download-text">Можешь скачать прямо сейчас!</h3>
-                <p style="max-width: 600px; margin: 0 auto 2rem; opacity: 0.8;">Установите СФЕРУ за 2 минуты и начните использовать все возможности сразу после установки. Совместимо с Windows 10 и 11.</p>
-                <button class="btn ripple-button" onclick="downloadFile()">Скачать СФЕРУ</button>
-                <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-                    <div style="text-align: center;">
-                        <i class="fas fa-desktop" style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--secondary);"></i>
-                        <p>Windows 10/11</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <i class="fas fa-microphone" style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--secondary);"></i>
-                        <p>Микрофон</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <i class="fas fa-wifi" style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--secondary);"></i>
-                        <p>Интернет</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <i class="fas fa-memory" style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--secondary);"></i>
-                        <p>4 ГБ ОЗУ</p>
-                    </div>
-                </div>
+                <h3 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Скачать СФЕРУ</h3>
+                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 3rem;">
+                    Установка займет менее 2 минут. Начните говорить со своим компьютером прямо сейчас!
+                </p>
+                <a href="#download" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.5rem 3rem;">
+                    <i class="fas fa-download"></i>
+                    Скачать бесплатно
+                </a>
+                <p style="color: rgba(255, 255, 255, 0.6); margin-top: 2rem; font-size: 0.9rem;">
+                    Версия 2.0 • Windows 10/11 • macOS • Linux • 150 МБ
+                </p>
             </div>
         </div>
     </section>
 
     <!-- Футер -->
-    <footer class="glass-dark">
+    <footer>
         <div class="footer-content">
-            <div class="footer-info">
+            <div class="footer-brand">
                 <div class="footer-logo">СФЕРА</div>
-                <p class="footer-description">Голосовой помощник нового поколения. Переосмысление взаимодействия человека и машины.</p>
-                <div class="social-icons">
-                    <a href="#" class="social-icon ripple-button"><i class="fab fa-vk"></i></a>
-                    <a href="#" class="social-icon ripple-button"><i class="fab fa-telegram"></i></a>
-                    <a href="#" class="social-icon ripple-button"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="social-icon ripple-button"><i class="fab fa-twitter"></i></a>
+                <p style="color: rgba(255, 255, 255, 0.7);">
+                    Голосовой помощник нового поколения. Переосмысление взаимодействия человека и машины.
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
                 </div>
             </div>
-            <div class="footer-links">
-                <h3>Продукт</h3>
-                <ul>
-                    <li><a href="#features">Функции</a></li>
-                    <li><a href="#capabilities">Возможности</a></li>
-                    <li><a href="#demo">Демо</a></li>
-                    <li><a href="#tech">Технологии</a></li>
-                    <li><a href="#download">Скачать</a></li>
+            <div>
+                <h3 style="color: white; margin-bottom: 1.5rem;">Продукт</h3>
+                <ul style="list-style: none; color: rgba(255, 255, 255, 0.7);">
+                    <li style="margin-bottom: 0.8rem;"><a href="#features" style="color: inherit; text-decoration: none;">Возможности</a></li>
+                    <li style="margin-bottom: 0.8rem;"><a href="#demo" style="color: inherit; text-decoration: none;">Демо</a></li>
+                    <li style="margin-bottom: 0.8rem;"><a href="#tech" style="color: inherit; text-decoration: none;">Технологии</a></li>
+                    <li><a href="#download" style="color: inherit; text-decoration: none;">Скачать</a></li>
                 </ul>
             </div>
-            <div class="footer-links">
-                <h3>Поддержка</h3>
-                <ul>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#">Документация</a></li>
-                    <li><a href="#">Форум</a></li>
-                    <li><a href="#">Связаться с нами</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h3>Компания</h3>
-                <ul>
-                    <li><a href="#">О нас</a></li>
-                    <li><a href="#">Блог</a></li>
-                    <li><a href="#">Карьера</a></li>
-                    <li><a href="#">Партнеры</a></li>
+            <div>
+                <h3 style="color: white; margin-bottom: 1.5rem;">Поддержка</h3>
+                <ul style="list-style: none; color: rgba(255, 255, 255, 0.7);">
+                    <li style="margin-bottom: 0.8rem;"><a href="#faq" style="color: inherit; text-decoration: none;">FAQ</a></li>
+                    <li style="margin-bottom: 0.8rem;"><a href="#" style="color: inherit; text-decoration: none;">Документация</a></li>
+                    <li style="margin-bottom: 0.8rem;"><a href="#" style="color: inherit; text-decoration: none;">Сообщество</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">Контакты</a></li>
                 </ul>
             </div>
         </div>
@@ -1629,233 +1360,161 @@
     </footer>
 
     <script>
-        // Функция для управления анимацией заставки
-        function runSplashAnimation() {
-        const splashText1 = document.getElementById('splashText1');
-        const splashText2 = document.getElementById('splashText2');
-        const splashText3 = document.getElementById('splashText3');
-        const splashImage = document.getElementById('splashImage');
-        const splashScreen = document.getElementById('splashScreen');
-        const hero = document.querySelector('.hero');
-
-        // Блокируем прокрутку во время заставки
-        document.body.style.overflow = 'hidden';
-
-        // Последовательность анимации заставки
-        setTimeout(() => {
-        splashText1.style.opacity = '1';
-        splashText1.style.animation = 'splashScaleIn 1.5s ease forwards';
-        }, 500);
-
-        setTimeout(() => {
-        splashText1.style.animation = 'splashFadeOut 1s ease forwards';
-        }, 2000);
-
-        setTimeout(() => {
-        splashText2.style.opacity = '1';
-        splashText2.style.animation = 'splashScaleIn 1.5s ease forwards';
-        }, 3000);
-
-        setTimeout(() => {
-        splashText2.style.animation = 'splashFadeOut 1s ease forwards';
-        }, 4500);
-
-        setTimeout(() => {
-        splashText3.style.opacity = '1';
-        splashText3.style.animation = 'splashScaleIn 1.5s ease forwards';
-        }, 5500);
-
-        setTimeout(() => {
-        splashText3.style.animation = 'splashFadeOut 1s ease forwards';
-        }, 7000);
-
-        setTimeout(() => {
-        splashImage.style.opacity = '1';
-        splashImage.style.animation = 'imageSlowFadeIn 3s ease forwards';
-        }, 8000);
-
-        // Скрытие заставки и показ основного контента
-        setTimeout(() => {
-        splashScreen.classList.add('fade-out');
-        setTimeout(() => {
-        splashScreen.style.display = 'none';
-        hero.classList.add('show');
-        // Разблокируем прокрутку
-        document.body.style.overflow = 'auto';
-        // Прокручиваем к началу страницы
-        window.scrollTo(0, 0);
-        initAnimations();
-        }, 1000);
-        }, 11000); // Увеличил время, чтобы изображение показывалось дольше
+        // Инициализация частиц
+        function initParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['#6d28d9', '#ec4899', '#3b82f6', '#06b6d4'];
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 6 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.opacity = Math.random() * 0.5 + 0.2;
+                particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                container.appendChild(particle);
+            }
         }
 
-        // Функция для инициализации анимаций интерфейса
-        function initAnimations() {
-        // Анимация появления элементов при скролле
-        const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-        if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-
-        // Добавляем задержку для последовательного появления
-        if (entry.target.classList.contains('feature-item')) {
-        const index = Array.from(entry.target.parentElement.children).indexOf(entry.target);
-        entry.target.style.transitionDelay = `${index * 0.1}s`;
+        // Анимация заставки
+        function initSplashScreen() {
+            const splashScreen = document.getElementById('splashScreen');
+            
+            setTimeout(() => {
+                splashScreen.classList.add('hidden');
+                
+                setTimeout(() => {
+                    splashScreen.style.display = 'none';
+                    initScrollAnimations();
+                }, 1000);
+            }, 3000);
         }
 
-        if (entry.target.classList.contains('tech-item')) {
-        const index = Array.from(entry.target.parentElement.children).indexOf(entry.target);
-        entry.target.style.transitionDelay = `${index * 0.1}s`;
+        // Анимации при скролле
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.feature-card, .stat-item').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
         }
 
-        if (entry.target.classList.contains('testimonial-card')) {
-        const index = Array.from(entry.target.parentElement.children).indexOf(entry.target);
-        entry.target.style.transitionDelay = `${index * 0.1}s`;
-        }
-
-        if (entry.target.classList.contains('faq-item')) {
-        const index = Array.from(entry.target.parentElement.children).indexOf(entry.target);
-        entry.target.style.transitionDelay = `${index * 0.1}s`;
-        }
-        }
-        });
-        }, observerOptions);
-
-        // Наблюдаем за элементами с анимацией
-        document.querySelectorAll('.feature-item, .tech-item, .testimonial-card, .faq-item, .demo-text, .demo-visual, .download-section').forEach(el => {
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-        });
-        }
-
-        // Функция загрузки файла
-        function downloadFile() {
-        // В реальном сценарии здесь была бы ссылка на файл
-        // window.location.href = 'путь_к_файлу/СФЕРА_установщик.exe';
-
-        // Для демонстрации просто покажем сообщение
-        alert('Начинается загрузка СФЕРЫ... Спасибо за ваш интерес!');
-        }
-
-        // Эффект капли
-        document.querySelectorAll('.ripple-button').forEach(button => {
-        button.addEventListener('click', function(e) {
-        const ripple = document.createElement('span');
-        ripple.classList.add('ripple');
-
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-
-        ripple.style.width = ripple.style.height = `${size}px`;
-        ripple.style.left = `${x}px`;
-        ripple.style.top = `${y}px`;
-
-        this.appendChild(ripple);
-
-        setTimeout(() => {
-        ripple.remove();
-        }, 600);
-        });
-        });
-
-        // Создание частиц для фона
-        function createParticles() {
-        const particlesContainer = document.querySelector('.hero');
-
-        for (let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        const size = Math.random() * 15 + 5;
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        const colors = ['rgba(74, 108, 247, 0.3)', 'rgba(108, 92, 231, 0.3)', 'rgba(0, 206, 201, 0.3)', 'rgba(253, 121, 168, 0.3)'];
-        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.top = `${Math.random() * 100}%`;
-        particle.style.left = `${Math.random() * 100}%`;
-        particle.style.animation = `float ${Math.random() * 15 + 10}s ease-in-out infinite`;
-        particle.style.animationDelay = `${Math.random() * 5}s`;
-        particlesContainer.appendChild(particle);
-        }
+        // Аккордеон FAQ
+        function initFAQ() {
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const isActive = answer.classList.contains('active');
+                    
+                    // Закрываем все
+                    document.querySelectorAll('.faq-answer').forEach(ans => {
+                        ans.classList.remove('active');
+                        ans.previousElementSibling.querySelector('i').className = 'fas fa-chevron-down';
+                    });
+                    
+                    // Открываем текущий, если был закрыт
+                    if (!isActive) {
+                        answer.classList.add('active');
+                        question.querySelector('i').className = 'fas fa-chevron-up';
+                    }
+                });
+            });
         }
 
         // Плавная навигация
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-        window.scrollTo({
-        top: targetElement.offsetTop - 80,
-        behavior: 'smooth'
-        });
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         }
-        });
-        });
 
-        // Изменение навигации при скролле
-        window.addEventListener('scroll', function() {
-        const nav = document.getElementById('navbar');
-        if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-        } else {
-        nav.classList.remove('scrolled');
+        // Активное меню при скролле
+        function initActiveMenu() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
         }
-        });
 
-        // FAQ аккордеон
-        document.querySelectorAll('.faq-question').forEach(question => {
-        question.addEventListener('click', () => {
-        const answer = question.nextElementSibling;
-        const isActive = answer.classList.contains('active');
-
-        // Закрыть все ответы
-        document.querySelectorAll('.faq-answer').forEach(ans => {
-        ans.classList.remove('active');
-        });
-
-        document.querySelectorAll('.faq-question i').forEach(icon => {
-        icon.className = 'fas fa-chevron-down';
-        });
-
-        // Открыть текущий ответ, если он был закрыт
-        if (!isActive) {
-        answer.classList.add('active');
-        question.querySelector('i').className = 'fas fa-chevron-up';
-        }
-        });
-        });
-
-        // Инициализация при загрузке страницы
+        // Инициализация при загрузке
         document.addEventListener('DOMContentLoaded', () => {
-        // Прокручиваем страницу вверх при каждой загрузке
-        window.scrollTo(0, 0);
-
-        // Отключаем восстановление позиции скролла браузером
-        if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual';
-        }
-
-        createParticles();
-        runSplashAnimation();
+            initParticles();
+            initSplashScreen();
+            initFAQ();
+            initSmoothScroll();
+            initActiveMenu();
+            
+            // Имитация загрузки файла
+            document.querySelector('.btn-primary[href="#download"]').addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#download') {
+                    e.preventDefault();
+                    alert('Начинается загрузка СФЕРЫ...\nРазмер файла: 150 МБ\nСпасибо за ваш интерес!');
+                    // В реальном приложении здесь будет window.location.href = 'download-link';
+                }
+            });
         });
 
-        // Сброс состояния при обновлении страницы
-        window.addEventListener('beforeunload', function() {
-        // Удаляем все данные, которые могут сохранять состояние
-        sessionStorage.clear();
-        localStorage.clear();
+        // Эффект навигации при скролле
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
         });
     </script>
 </body>
-</html>
+</html>Ы
