@@ -823,6 +823,36 @@
             animation: particleFloat 20s linear infinite;
         }
 
+        /* Стиль для кнопок скачивания */
+        .download-btn {
+            position: relative;
+            z-index: 10;
+        }
+
+        .download-notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            z-index: 10000;
+            animation: fadeInUp 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .download-notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Адаптивность */
         @media (max-width: 1200px) {
             .hero-title {
@@ -957,7 +987,12 @@
                 <a href="#guide">Руководство</a>
                 <a href="#features">Возможности</a>
                 <a href="#demo">Демо</a>
-                <a href="https://drive.google.com/file/d/17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0/view?usp=sharing" class="btn btn-primary" target="_blank">Скачать</a>
+                <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
+                   class="btn btn-primary download-btn" 
+                   target="_blank">
+                    <i class="fas fa-download"></i>
+                    Скачать
+                </a>
             </div>
         </div>
     </nav>
@@ -980,7 +1015,9 @@
                     <p>В этом руководстве ты узнаешь, как она работает, зачем нужна и как с её помощью сделать каждый день проще и удобнее. Начнём, пожалуй!</p>
                 </div>
                 <div class="cta-buttons">
-                    <a href="#download" class="btn btn-primary">
+                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
+                       class="btn btn-primary download-btn" 
+                       target="_blank">
                         <i class="fas fa-download"></i>
                         Скачать бесплатно
                     </a>
@@ -1128,6 +1165,16 @@
                 </blockquote>
                 
                 <p>Начни уже сегодня — и почувствуй, как технологии начинают служить тебе по-настоящему.</p>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
+                       class="btn btn-primary download-btn" 
+                       target="_blank"
+                       style="font-size: 1.2rem; padding: 1rem 2rem;">
+                        <i class="fas fa-download"></i>
+                        Скачать СФЕРУ сейчас
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1187,6 +1234,16 @@
                 <h3>Системное управление</h3>
                 <p>Полный контроль над системными функциями Windows через голос</p>
             </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
+               class="btn btn-primary download-btn" 
+               target="_blank"
+               style="font-size: 1.2rem; padding: 1.2rem 3rem;">
+                <i class="fas fa-download"></i>
+                Скачать и попробовать все возможности
+            </a>
         </div>
     </section>
 
@@ -1256,6 +1313,16 @@
                         Обучение вашему голосу и предпочтениям
                     </li>
                 </ul>
+                
+                <div style="margin-top: 3rem;">
+                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
+                       class="btn btn-primary download-btn" 
+                       target="_blank"
+                       style="font-size: 1.1rem; padding: 1rem 2rem;">
+                        <i class="fas fa-play-circle"></i>
+                        Скачать и попробовать демо
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1276,13 +1343,51 @@
                 <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 3rem; font-size: 1.2rem;">
                     Установка займет менее 2 минут. Начните говорить со своим компьютером прямо сейчас!
                 </p>
-                <a href="#download" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.5rem 3rem;">
+                <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
+                   class="btn btn-primary download-btn" 
+                   style="font-size: 1.2rem; padding: 1.5rem 3rem;"
+                   target="_blank">
                     <i class="fas fa-download"></i>
                     Скачать бесплатно
                 </a>
                 <p style="color: rgba(255, 255, 255, 0.6); margin-top: 2rem; font-size: 0.9rem;">
                     Версия 2.0 • Windows 10/11 • 150 МБ • Бесплатно
                 </p>
+                <!-- Дополнительная информация о скачивании -->
+                <div style="margin-top: 3rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px;">
+                    <h4 style="color: var(--accent); margin-bottom: 1rem;">
+                        <i class="fas fa-info-circle"></i> Инструкция по установке
+                    </h4>
+                    <ol style="text-align: left; color: rgba(255, 255, 255, 0.7); padding-left: 1.5rem;">
+                        <li>Нажмите на любую кнопку "Скачать" на этой странице</li>
+                        <li>Распакуйте архив "СФЕРА_Голосовой_помощник.zip"</li>
+                        <li>Запустите файл "СФЕРА_Установка.exe"</li>
+                        <li>Следуйте инструкциям установщика</li>
+                        <li>После установки запустите СФЕРУ из меню "Пуск"</li>
+                    </ol>
+                </div>
+                
+                <!-- Альтернативные ссылки для скачивания -->
+                <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
+                       class="btn btn-secondary download-btn" 
+                       target="_blank"
+                       style="font-size: 1rem; padding: 0.8rem 1.5rem;">
+                        <i class="fas fa-download"></i> Скачать для Windows
+                    </a>
+                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
+                       class="btn btn-secondary download-btn" 
+                       target="_blank"
+                       style="font-size: 1rem; padding: 0.8rem 1.5rem;">
+                        <i class="fas fa-file-archive"></i> ZIP архив
+                    </a>
+                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
+                       class="btn btn-secondary download-btn" 
+                       target="_blank"
+                       style="font-size: 1rem; padding: 0.8rem 1.5rem;">
+                        <i class="fas fa-cloud-download-alt"></i> Облачное скачивание
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1323,6 +1428,15 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 СФЕРА. Все права защищены.</p>
+            <!-- Дополнительная ссылка для скачивания в футере -->
+            <p style="margin-top: 1rem;">
+                <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
+                   class="download-btn" 
+                   style="color: var(--accent); text-decoration: none; font-weight: 600;"
+                   target="_blank">
+                    <i class="fas fa-download"></i> Скачать последнюю версию
+                </a>
+            </p>
         </div>
     </footer>
 
@@ -1433,22 +1547,65 @@
             });
         }
 
+        // Обработчик для кнопок скачивания
+        function initDownloadButtons() {
+            const downloadButtons = document.querySelectorAll('.download-btn');
+            
+            downloadButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Показываем уведомление о начале загрузки
+                    showDownloadNotification();
+                    
+                    // Можно добавить отслеживание статистики загрузок
+                    trackDownload();
+                    
+                    // Не предотвращаем переход по ссылке, чтобы скачивание началось
+                });
+            });
+        }
+
+        // Показать уведомление о загрузке
+        function showDownloadNotification() {
+            // Создаем уведомление
+            const notification = document.createElement('div');
+            notification.className = 'download-notification';
+            notification.innerHTML = `
+                <i class="fas fa-check-circle"></i>
+                <span>Скачивание началось! Проверьте папку "Загрузки"</span>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Показываем уведомление
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            // Удаляем уведомление через 3 секунды
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Отслеживание загрузок
+        function trackDownload() {
+            console.log('СФЕРА: Начало загрузки приложения');
+            // Здесь можно добавить код для Google Analytics или другого сервиса аналитики
+            // Например: gtag('event', 'download', { 'app_name': 'СФЕРА' });
+        }
+
         // Инициализация при загрузке
         document.addEventListener('DOMContentLoaded', () => {
             initParticles();
             initSplashScreen();
             initSmoothScroll();
             initActiveMenu();
-            
-            // Имитация загрузки файла
-            document.querySelectorAll('.btn-primary[href="#download"]').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    if (this.getAttribute('href') === '#download') {
-                        e.preventDefault();
-                        alert('Начинается загрузка СФЕРЫ...\nРазмер файла: 150 МБ\nСпасибо за ваш интерес!');
-                    }
-                });
-            });
+            initDownloadButtons();
         });
 
         // Эффект навигации при скролле
@@ -1463,5 +1620,3 @@
     </script>
 </body>
 </html>
-
-
