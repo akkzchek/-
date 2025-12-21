@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>СФЕРА - Голосовой помощник нового поколения</title>
+
+    <!-- ИКОНКА САЙТА (FAVICON) -->
+    <link rel="icon" type="image/ico" href="image.ico">
+    <link rel="apple-touch-icon" href="image.ico">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -53,21 +58,45 @@
 
         /* Анимации */
         @keyframes float3d {
-            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
-            25% { transform: translateY(-20px) translateX(10px) rotate(5deg); }
-            50% { transform: translateY(-10px) translateX(-10px) rotate(-5deg); }
-            75% { transform: translateY(-15px) translateX(5px) rotate(3deg); }
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-20px) translateX(10px) rotate(5deg);
+            }
+
+            50% {
+                transform: translateY(-10px) translateX(-10px) rotate(-5deg);
+            }
+
+            75% {
+                transform: translateY(-15px) translateX(5px) rotate(3deg);
+            }
         }
 
         @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
+            0% {
+                background-position: -1000px 0;
+            }
+
+            100% {
+                background-position: 1000px 0;
+            }
         }
 
         @keyframes gradientShift {
-            0% { background-position: 0% 0%; }
-            50% { background-position: 100% 100%; }
-            100% { background-position: 0% 0%; }
+            0% {
+                background-position: 0% 0%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            100% {
+                background-position: 0% 0%;
+            }
         }
 
         @keyframes fadeInUp {
@@ -75,6 +104,7 @@
                 opacity: 0;
                 transform: translateY(40px) scale(0.95);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
@@ -82,8 +112,15 @@
         }
 
         @keyframes glowOrb {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 1; }
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
         }
 
         @keyframes particleFloat {
@@ -91,8 +128,15 @@
                 transform: translateY(0) translateX(0) rotate(0deg);
                 opacity: 0;
             }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
             100% {
                 transform: translateY(-100vh) translateX(100px) rotate(360deg);
                 opacity: 0;
@@ -100,8 +144,13 @@
         }
 
         @keyframes voiceWave {
-            0%, 100% { height: 15px; }
-            50% { height: 40px; }
+            0%, 100% {
+                height: 15px;
+            }
+
+            50% {
+                height: 40px;
+            }
         }
 
         /* Новые классы для улучшений */
@@ -132,20 +181,18 @@
         .neon-border {
             position: relative;
             border: 2px solid transparent;
-            background: linear-gradient(var(--dark), var(--dark)) padding-box,
-                        var(--gradient) border-box;
+            background: linear-gradient(var(--dark), var(--dark)) padding-box, var(--gradient) border-box;
             border-radius: 24px;
         }
 
         .hover-lift {
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .hover-lift:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-        }
+            .hover-lift:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            }
 
         /* Заставка */
         .splash-screen {
@@ -163,10 +210,10 @@
             transition: opacity 1s ease, visibility 1s ease;
         }
 
-        .splash-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
+            .splash-screen.hidden {
+                opacity: 0;
+                visibility: hidden;
+            }
 
         .splash-container {
             text-align: center;
@@ -182,11 +229,7 @@
         .splash-orb {
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle at 30% 30%, 
-                rgba(109, 40, 217, 0.8) 0%,
-                rgba(109, 40, 217, 0.4) 30%,
-                rgba(109, 40, 217, 0.1) 70%,
-                transparent 100%);
+            background: radial-gradient(circle at 30% 30%, rgba(109, 40, 217, 0.8) 0%, rgba(109, 40, 217, 0.4) 30%, rgba(109, 40, 217, 0.1) 70%, transparent 100%);
             border-radius: 50%;
             position: absolute;
             animation: glowOrb 4s ease-in-out infinite;
@@ -199,11 +242,7 @@
             margin-bottom: 1rem;
             position: relative;
             z-index: 2;
-            background: linear-gradient(45deg, 
-                #fff 0%,
-                var(--secondary) 30%,
-                var(--accent) 70%,
-                #fff 100%);
+            background: linear-gradient(45deg, #fff 0%, var(--secondary) 30%, var(--accent) 70%, #fff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -230,17 +269,17 @@
             margin-top: 3rem;
         }
 
-        .splash-loader::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: var(--gradient);
-            transform: translateX(-100%);
-            animation: shimmer 2s ease-in-out infinite;
-        }
+            .splash-loader::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                background: var(--gradient);
+                transform: translateX(-100%);
+                animation: shimmer 2s ease-in-out infinite;
+            }
 
         /* Навигация */
         nav {
@@ -257,11 +296,11 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        nav.scrolled {
-            padding: 0.8rem 0;
-            background: rgba(10, 15, 31, 0.9);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
+            nav.scrolled {
+                padding: 0.8rem 0;
+                background: rgba(10, 15, 31, 0.9);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
 
         .nav-container {
             width: 90%;
@@ -300,42 +339,42 @@
             align-items: center;
         }
 
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 8px 0;
-        }
+            .nav-links a {
+                color: rgba(255, 255, 255, 0.9);
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 1.1rem;
+                transition: all 0.3s ease;
+                position: relative;
+                padding: 8px 0;
+            }
 
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
-        }
+                .nav-links a::before {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    height: 2px;
+                    background: var(--gradient);
+                    transition: width 0.3s ease;
+                }
 
-        .nav-links a:hover {
-            color: #fff;
-        }
+                .nav-links a:hover {
+                    color: #fff;
+                }
 
-        .nav-links a:hover::before {
-            width: 100%;
-        }
+                    .nav-links a:hover::before {
+                        width: 100%;
+                    }
 
-        .nav-links a.active {
-            color: #fff;
-        }
+                .nav-links a.active {
+                    color: #fff;
+                }
 
-        .nav-links a.active::before {
-            width: 100%;
-        }
+                    .nav-links a.active::before {
+                        width: 100%;
+                    }
 
         /* Герой секция */
         .hero {
@@ -353,10 +392,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(109, 40, 217, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 50%, rgba(109, 40, 217, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
             animation: gradientShift 20s ease infinite;
             background-size: 400% 400%;
         }
@@ -426,10 +462,21 @@
             animation: voiceWave 1.5s ease-in-out infinite;
         }
 
-        .voice-bar:nth-child(2) { animation-delay: 0.1s; }
-        .voice-bar:nth-child(3) { animation-delay: 0.2s; }
-        .voice-bar:nth-child(4) { animation-delay: 0.3s; }
-        .voice-bar:nth-child(5) { animation-delay: 0.4s; }
+            .voice-bar:nth-child(2) {
+                animation-delay: 0.1s;
+            }
+
+            .voice-bar:nth-child(3) {
+                animation-delay: 0.2s;
+            }
+
+            .voice-bar:nth-child(4) {
+                animation-delay: 0.3s;
+            }
+
+            .voice-bar:nth-child(5) {
+                animation-delay: 0.4s;
+            }
 
         .cta-buttons {
             display: flex;
@@ -461,10 +508,10 @@
             box-shadow: 0 10px 30px rgba(109, 40, 217, 0.4);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(109, 40, 217, 0.6);
-        }
+            .btn-primary:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 40px rgba(109, 40, 217, 0.6);
+            }
 
         .btn-secondary {
             background: rgba(255, 255, 255, 0.1);
@@ -473,10 +520,10 @@
             backdrop-filter: blur(10px);
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px);
-        }
+            .btn-secondary:hover {
+                background: rgba(255, 255, 255, 0.2);
+                transform: translateY(-5px);
+            }
 
         /* Секции */
         section {
@@ -522,9 +569,9 @@
             perspective: 1000px;
         }
 
-        .feature-card:hover {
-            transform: translateY(-15px) rotateX(5deg);
-        }
+            .feature-card:hover {
+                transform: translateY(-15px) rotateX(5deg);
+            }
 
         .feature-icon {
             width: 80px;
@@ -566,46 +613,46 @@
             border-left: 4px solid var(--secondary);
         }
 
-        .guide-section h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+            .guide-section h3 {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+                color: white;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
 
-        .guide-section p {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            font-size: 1.2rem;
-        }
+            .guide-section p {
+                color: rgba(255, 255, 255, 0.8);
+                margin-bottom: 1.5rem;
+                line-height: 1.8;
+                font-size: 1.2rem;
+            }
 
-        .guide-section ul, .guide-section ol {
-            color: rgba(255, 255, 255, 0.8);
-            margin: 1.5rem 0;
-            padding-left: 2rem;
-            font-size: 1.1rem;
-        }
+            .guide-section ul, .guide-section ol {
+                color: rgba(255, 255, 255, 0.8);
+                margin: 1.5rem 0;
+                padding-left: 2rem;
+                font-size: 1.1rem;
+            }
 
-        .guide-section li {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
+            .guide-section li {
+                margin-bottom: 1rem;
+                line-height: 1.6;
+            }
 
-        .guide-section strong {
-            color: white;
-            font-weight: 700;
-        }
+            .guide-section strong {
+                color: white;
+                font-weight: 700;
+            }
 
-        .guide-section code {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            color: var(--accent);
-        }
+            .guide-section code {
+                background: rgba(255, 255, 255, 0.1);
+                padding: 0.2rem 0.5rem;
+                border-radius: 4px;
+                font-family: 'Courier New', monospace;
+                color: var(--accent);
+            }
 
         .note-box {
             background: rgba(255, 255, 255, 0.05);
@@ -615,9 +662,9 @@
             border-radius: 0 8px 8px 0;
         }
 
-        .note-box strong {
-            color: var(--accent);
-        }
+            .note-box strong {
+                color: var(--accent);
+            }
 
         .commands-grid {
             display: grid;
@@ -633,11 +680,11 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .command-item strong {
-            color: var(--accent);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
+            .command-item strong {
+                color: var(--accent);
+                display: block;
+                margin-bottom: 0.5rem;
+            }
 
         /* Демо секция */
         .demo-container {
@@ -669,9 +716,17 @@
             border-radius: 50%;
         }
 
-        .terminal-dot.red { background: #ff5f56; }
-        .terminal-dot.yellow { background: #ffbd2e; }
-        .terminal-dot.green { background: #27c93f; }
+            .terminal-dot.red {
+                background: #ff5f56;
+            }
+
+            .terminal-dot.yellow {
+                background: #ffbd2e;
+            }
+
+            .terminal-dot.green {
+                background: #27c93f;
+            }
 
         .terminal-content {
             color: rgba(255, 255, 255, 0.9);
@@ -712,19 +767,19 @@
             transition: all 0.3s ease;
         }
 
-        .faq-question:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
+            .faq-question:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
 
-        .faq-question h3 {
-            font-size: 1.3rem;
-            color: white;
-            margin: 0;
-        }
+            .faq-question h3 {
+                font-size: 1.3rem;
+                color: white;
+                margin: 0;
+            }
 
-        .faq-question i {
-            transition: transform 0.3s ease;
-        }
+            .faq-question i {
+                transition: transform 0.3s ease;
+            }
 
         .faq-answer {
             max-height: 0;
@@ -733,9 +788,9 @@
             background: rgba(255, 255, 255, 0.02);
         }
 
-        .faq-answer.active {
-            max-height: 500px;
-        }
+            .faq-answer.active {
+                max-height: 500px;
+            }
 
         .faq-answer-content {
             padding: 0 1.8rem 1.8rem;
@@ -791,10 +846,10 @@
             transition: all 0.3s ease;
         }
 
-        .social-link:hover {
-            background: var(--gradient);
-            transform: translateY(-3px);
-        }
+            .social-link:hover {
+                background: var(--gradient);
+                transform: translateY(-3px);
+            }
 
         .footer-bottom {
             text-align: center;
@@ -848,22 +903,22 @@
             transition: all 0.3s ease;
         }
 
-        .download-notification.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+            .download-notification.show {
+                opacity: 1;
+                transform: translateY(0);
+            }
 
         /* Адаптивность */
         @media (max-width: 1200px) {
             .hero-title {
                 font-size: 3.5rem;
             }
-            
+
             .demo-container {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
-            
+
             .section-title {
                 font-size: 3rem;
             }
@@ -873,36 +928,36 @@
             .nav-links {
                 display: none;
             }
-            
+
             .hero-title {
                 font-size: 2.8rem;
             }
-            
+
             .hero-description {
                 font-size: 1.1rem;
                 padding: 1.5rem;
             }
-            
+
             .features-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .guide-section {
                 padding: 2rem;
             }
-            
-            .guide-section h3 {
-                font-size: 1.7rem;
-            }
-            
+
+                .guide-section h3 {
+                    font-size: 1.7rem;
+                }
+
             .section-title {
                 font-size: 2.5rem;
             }
-            
+
             .splash-logo {
                 font-size: 5rem;
             }
-            
+
             .splash-subtitle {
                 font-size: 1.8rem;
             }
@@ -912,24 +967,24 @@
             .hero-title {
                 font-size: 2.3rem;
             }
-            
+
             .cta-buttons {
                 flex-direction: column;
             }
-            
+
             .btn {
                 width: 100%;
                 justify-content: center;
             }
-            
+
             .guide-section {
                 padding: 1.5rem;
             }
-            
+
             .section-title {
                 font-size: 2rem;
             }
-            
+
             .commands-grid {
                 grid-template-columns: 1fr;
             }
@@ -945,10 +1000,10 @@
             border-radius: 0 8px 8px 0;
         }
 
-        blockquote strong {
-            color: var(--accent);
-            font-style: normal;
-        }
+            blockquote strong {
+                color: var(--accent);
+                font-style: normal;
+            }
 
         .highlight {
             background: linear-gradient(120deg, rgba(109, 40, 217, 0.2) 0%, transparent 100%);
@@ -987,8 +1042,8 @@
                 <a href="#guide">Руководство</a>
                 <a href="#features">Возможности</a>
                 <a href="#demo">Демо</a>
-                <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
-                   class="btn btn-primary download-btn" 
+                <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0"
+                   class="btn btn-primary download-btn"
                    target="_blank">
                     <i class="fas fa-download"></i>
                     Скачать
@@ -1015,8 +1070,8 @@
                     <p>В этом руководстве ты узнаешь, как она работает, зачем нужна и как с её помощью сделать каждый день проще и удобнее. Начнём, пожалуй!</p>
                 </div>
                 <div class="cta-buttons">
-                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
-                       class="btn btn-primary download-btn" 
+                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0"
+                       class="btn btn-primary download-btn"
                        target="_blank">
                         <i class="fas fa-download"></i>
                         Скачать бесплатно
@@ -1049,7 +1104,7 @@
             <div class="guide-section glass-morphism">
                 <h3><i class="fas fa-bullseye"></i> Что такое команды?</h3>
                 <p><strong>Команда</strong> — это действие, которое СФЕРА выполняет по твоей голосовой фразе. Ты сам решаешь, что она будет делать, выбрав один из четырёх типов:</p>
-                
+
                 <h4 style="margin-top: 2rem;">1. <strong>Приложения</strong></h4>
                 <p>Выбираешь тип <em>Приложения</em> → нажимаешь <strong>«Выбрать»</strong> → появляется список всех программ на твоём компьютере. Кликаешь, например, <em>Telegram</em>, и задаёшь голосовую команду: <strong>«Открой чаты»</strong>. Теперь говоришь: <em>«СФЕРА, открой чаты»</em> — и мессенджер запускается мгновенно. Так можно настроить любое приложение: от <em>Блокнота</em> до <em>Photoshop</em>.</p>
 
@@ -1072,7 +1127,8 @@
                 <ol>
                     <li>Нажми <strong>«Создать сценарий»</strong>.</li>
                     <li>Нажми <strong>«Выбрать»</strong> — и перед тобой появятся все твои команды.</li>
-                    <li>Отметь нужные действия, например:
+                    <li>
+                        Отметь нужные действия, например:
                         <ul>
                             <li>Открыть браузер</li>
                             <li>Запустить музыку</li>
@@ -1094,7 +1150,7 @@
             <div class="guide-section glass-morphism">
                 <h3><i class="fas fa-bolt"></i> Готовые команды: начни использовать уже сегодня</h3>
                 <p>СФЕРА поставляется с набором встроенных команд — они работают сразу, без настройки:</p>
-                
+
                 <div class="commands-grid">
                     <div class="command-item">
                         <strong>«СФЕРА, время»</strong>
@@ -1159,16 +1215,16 @@
                 <h3><i class="fas fa-trophy"></i> Заключение</h3>
                 <p><strong>СФЕРА</strong> — это не просто программа. Это <strong>твой голосовой мост к компьютеру</strong>, где каждое слово становится действием.</p>
                 <p>Ты создаёшь <strong>свой уникальный цифровой опыт</strong>: от простых фраз до сложных автоматизаций. Говори — и мир технологий откликается.</p>
-                
+
                 <blockquote>
                     <strong>СФЕРА слышит. СФЕРА понимает. СФЕРА делает.</strong>
                 </blockquote>
-                
+
                 <p>Начни уже сегодня — и почувствуй, как технологии начинают служить тебе по-настоящему.</p>
-                
+
                 <div style="text-align: center; margin-top: 3rem;">
-                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
-                       class="btn btn-primary download-btn" 
+                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0"
+                       class="btn btn-primary download-btn"
                        target="_blank"
                        style="font-size: 1.2rem; padding: 1rem 2rem;">
                         <i class="fas fa-download"></i>
@@ -1235,10 +1291,10 @@
                 <p>Полный контроль над системными функциями Windows через голос</p>
             </div>
         </div>
-        
+
         <div style="text-align: center; margin-top: 4rem;">
-            <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
-               class="btn btn-primary download-btn" 
+            <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0"
+               class="btn btn-primary download-btn"
                target="_blank"
                style="font-size: 1.2rem; padding: 1.2rem 3rem;">
                 <i class="fas fa-download"></i>
@@ -1313,10 +1369,10 @@
                         Обучение вашему голосу и предпочтениям
                     </li>
                 </ul>
-                
+
                 <div style="margin-top: 3rem;">
-                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
-                       class="btn btn-primary download-btn" 
+                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0"
+                       class="btn btn-primary download-btn"
                        target="_blank"
                        style="font-size: 1.1rem; padding: 1rem 2rem;">
                         <i class="fas fa-play-circle"></i>
@@ -1343,8 +1399,8 @@
                 <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 3rem; font-size: 1.2rem;">
                     Установка займет менее 2 минут. Начните говорить со своим компьютером прямо сейчас!
                 </p>
-                <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
-                   class="btn btn-primary download-btn" 
+                <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0"
+                   class="btn btn-primary download-btn"
                    style="font-size: 1.2rem; padding: 1.5rem 3rem;"
                    target="_blank">
                     <i class="fas fa-download"></i>
@@ -1366,23 +1422,23 @@
                         <li>После установки запустите СФЕРУ из меню "Пуск"</li>
                     </ol>
                 </div>
-                
+
                 <!-- Альтернативные ссылки для скачивания -->
                 <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
-                       class="btn btn-secondary download-btn" 
+                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0"
+                       class="btn btn-secondary download-btn"
                        target="_blank"
                        style="font-size: 1rem; padding: 0.8rem 1.5rem;">
                         <i class="fas fa-download"></i> Скачать для Windows
                     </a>
-                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
-                       class="btn btn-secondary download-btn" 
+                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0"
+                       class="btn btn-secondary download-btn"
                        target="_blank"
                        style="font-size: 1rem; padding: 0.8rem 1.5rem;">
                         <i class="fas fa-file-archive"></i> ZIP архив
                     </a>
-                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
-                       class="btn btn-secondary download-btn" 
+                    <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0"
+                       class="btn btn-secondary download-btn"
                        target="_blank"
                        style="font-size: 1rem; padding: 0.8rem 1.5rem;">
                         <i class="fas fa-cloud-download-alt"></i> Облачное скачивание
@@ -1430,8 +1486,8 @@
             <p>&copy; 2025 СФЕРА. Все права защищены.</p>
             <!-- Дополнительная ссылка для скачивания в футере -->
             <p style="margin-top: 1rem;">
-                <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0" 
-                   class="download-btn" 
+                <a href="https://drive.google.com/uc?export=download&id=17kp2AugnDAdbcdP_l9YwF0PVgiTGbd_0"
+                   class="download-btn"
                    style="color: var(--accent); text-decoration: none; font-weight: 600;"
                    target="_blank">
                     <i class="fas fa-download"></i> Скачать последнюю версию
@@ -1443,179 +1499,179 @@
     <script>
         // Инициализация частиц
         function initParticles() {
-            const container = document.getElementById('particles');
-            const colors = ['#6d28d9', '#ec4899', '#3b82f6', '#06b6d4'];
-            
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                const size = Math.random() * 6 + 2;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                particle.style.opacity = Math.random() * 0.5 + 0.2;
-                particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
-                particle.style.animationDelay = `${Math.random() * 5}s`;
-                
-                container.appendChild(particle);
-            }
+        const container = document.getElementById('particles');
+        const colors = ['#6d28d9', '#ec4899', '#3b82f6', '#06b6d4'];
+
+        for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+
+        const size = Math.random() * 6 + 2;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.opacity = Math.random() * 0.5 + 0.2;
+        particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+
+        container.appendChild(particle);
+        }
         }
 
         // Анимация заставки
         function initSplashScreen() {
-            const splashScreen = document.getElementById('splashScreen');
-            
-            setTimeout(() => {
-                splashScreen.classList.add('hidden');
-                
-                setTimeout(() => {
-                    splashScreen.style.display = 'none';
-                    initScrollAnimations();
-                }, 1000);
-            }, 3000);
+        const splashScreen = document.getElementById('splashScreen');
+
+        setTimeout(() => {
+        splashScreen.classList.add('hidden');
+
+        setTimeout(() => {
+        splashScreen.style.display = 'none';
+        initScrollAnimations();
+        }, 1000);
+        }, 3000);
         }
 
         // Анимации при скролле
         function initScrollAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-            
-            document.querySelectorAll('.feature-card, .guide-section').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(el);
-            });
+        const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        }
+        });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .guide-section').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+        });
         }
 
         // Плавная навигация
         function initSmoothScroll() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+        window.scrollTo({
+        top: targetElement.offsetTop - 80,
+        behavior: 'smooth'
+        });
+        }
+        });
+        });
         }
 
         // Активное меню при скролле
         function initActiveMenu() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            window.addEventListener('scroll', () => {
-                let current = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (scrollY >= (sectionTop - 100)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-            });
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+        let current = '';
+
+        sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= (sectionTop - 100)) {
+        current = section.getAttribute('id');
+        }
+        });
+
+        navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+        }
+        });
+        });
         }
 
         // Обработчик для кнопок скачивания
         function initDownloadButtons() {
-            const downloadButtons = document.querySelectorAll('.download-btn');
-            
-            downloadButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    // Показываем уведомление о начале загрузки
-                    showDownloadNotification();
-                    
-                    // Можно добавить отслеживание статистики загрузок
-                    trackDownload();
-                    
-                    // Не предотвращаем переход по ссылке, чтобы скачивание началось
-                });
-            });
+        const downloadButtons = document.querySelectorAll('.download-btn');
+
+        downloadButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+        // Показываем уведомление о начале загрузки
+        showDownloadNotification();
+
+        // Можно добавить отслеживание статистики загрузок
+        trackDownload();
+
+        // Не предотвращаем переход по ссылке, чтобы скачивание началось
+        });
+        });
         }
 
         // Показать уведомление о загрузке
         function showDownloadNotification() {
-            // Создаем уведомление
-            const notification = document.createElement('div');
-            notification.className = 'download-notification';
-            notification.innerHTML = `
-                <i class="fas fa-check-circle"></i>
-                <span>Скачивание началось! Проверьте папку "Загрузки"</span>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Показываем уведомление
-            setTimeout(() => {
-                notification.classList.add('show');
-            }, 10);
-            
-            // Удаляем уведомление через 3 секунды
-            setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        document.body.removeChild(notification);
-                    }
-                }, 300);
-            }, 3000);
+        // Создаем уведомление
+        const notification = document.createElement('div');
+        notification.className = 'download-notification';
+        notification.innerHTML = `
+        <i class="fas fa-check-circle"></i>
+        <span>Скачивание началось! Проверьте папку "Загрузки"</span>
+        `;
+
+        document.body.appendChild(notification);
+
+        // Показываем уведомление
+        setTimeout(() => {
+        notification.classList.add('show');
+        }, 10);
+
+        // Удаляем уведомление через 3 секунды
+        setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+        if (notification.parentNode) {
+        document.body.removeChild(notification);
+        }
+        }, 300);
+        }, 3000);
         }
 
         // Отслеживание загрузок
         function trackDownload() {
-            console.log('СФЕРА: Начало загрузки приложения');
-            // Здесь можно добавить код для Google Analytics или другого сервиса аналитики
-            // Например: gtag('event', 'download', { 'app_name': 'СФЕРА' });
+        console.log('СФЕРА: Начало загрузки приложения');
+        // Здесь можно добавить код для Google Analytics или другого сервиса аналитики
+        // Например: gtag('event', 'download', { 'app_name': 'СФЕРА' });
         }
 
         // Инициализация при загрузке
         document.addEventListener('DOMContentLoaded', () => {
-            initParticles();
-            initSplashScreen();
-            initSmoothScroll();
-            initActiveMenu();
-            initDownloadButtons();
+        initParticles();
+        initSplashScreen();
+        initSmoothScroll();
+        initActiveMenu();
+        initDownloadButtons();
         });
 
         // Эффект навигации при скролле
         window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+        } else {
+        nav.classList.remove('scrolled');
+        }
         });
     </script>
 </body>
